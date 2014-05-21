@@ -1,0 +1,10 @@
+div
+	= klas
+	| <br>
+	= vak
+	| <br>
+	= lokaal
+	| <br>
+	if examen
+		| <br>
+		= examen

@@ -1,0 +1,9 @@
+div
+	= vak
+	| <br>
+	= docent
+	| <br>
+	= lokaal
+	if examen
+		| <br>
+		= examen

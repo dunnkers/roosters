@@ -1,0 +1,5 @@
+.loading_content_wrapper
+	/ same as the search input
+	.col-xs-12.col-sm-7.col-md-5.col-lg-4.col-sm-offset-3
+		.spinner
+			.three-quarters

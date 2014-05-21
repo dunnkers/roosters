@@ -1,0 +1,36 @@
+.col-xs-12.col-sm-9.col-sm-push-3
+	h2 = item.titel
+
+	table.schedule
+		thead
+			tr
+				th
+					| Uur\<wbr>Dag
+				th maandag
+				th dinsdag
+				th woensdag
+				th donderdag
+				th vrijdag
+
+		tbody
+			each day in schedule.timetable
+				tr
+					each day
+						if uur
+							th = uur
+						else
+							if between
+								td.tussenuur{action "between" i j} tussen
+							else
+								td class=examen:examenuur
+									if nested
+										table
+											tbody
+												each nested
+													tr
+														td
+															= view "hour"
+									else
+										= view "hour"
+
+outlet

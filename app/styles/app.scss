@@ -1,0 +1,109 @@
+@import 'vendor/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+@import 'typeahead';
+@import 'spinner';
+
+$speciaal_uur: rgb(240, 240, 240);
+
+.spinner {
+	display: table;
+	margin: 0 auto;
+	padding: 150px 0;
+}
+
+html, body {
+  margin: 20px;
+
+	@media (max-width: $screen-sm-min) {
+		margin-left: 0;
+		margin-right: 0;
+
+		[class*="col-"] {
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+	}
+}
+
+/* schedule */
+
+.schedule {
+	border: 1px solid black;
+
+	td, th {
+		font-size: 12px;
+		font-family: arial;
+		border: 1px solid black;
+		vertical-align: top;
+		padding: 2px;
+	}
+
+	td a {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	th {
+		font-weight: normal;
+		background-color: rgb(220, 220, 220);
+	}
+
+	thead th {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	@media (max-width: $screen-sm-min) {
+		/* http://www.bootply.com/9njmoY2CmS */
+		table-layout: fixed;
+		width: 100%;
+		overflow-wrap: break-word;
+	}
+
+	.examenuur {
+		background-color: $speciaal_uur;
+	}
+
+	.tussenuur {
+		background-color: $speciaal_uur;
+		cursor: pointer;
+		text-decoration: underline;
+
+		&:hover {
+			background-color: #D6F5FF;
+		}
+	}
+}
+
+/* between panel */
+
+.panel-group {
+	margin-bottom: 0px;
+
+	.panel {
+		.panel-title {
+			padding-left: 15px;
+		}
+
+		.panel-body {
+			padding: 0px;
+		}
+
+		.list-group {
+			margin-bottom: 0px;
+			padding-left: 0;
+		}
+
+		.panel-default > .panel-heading {
+			background-color: white;
+		}
+	}
+}
+
+
+/* search input */
+
+.twitter-typeahead {
+	width: 100%;
+}
