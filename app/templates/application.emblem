@@ -1,7 +1,9 @@
 .container
 	.row
 		.col-xs-12.col-sm-7.col-md-5.col-lg-4.col-sm-offset-3
-			#bloodhound
-				= input class="typeahead" action="search" placeholder="Zoek..." value=searchValue type="search"
+			form
+				#bloodhound
+					= input class="typeahead" action="search" placeholder="Zoek..." value=searchValue type="search" required="true"
+					.close-icon.hidden-md.hidden-lg{action "focus"}
 	.row
 		outlet

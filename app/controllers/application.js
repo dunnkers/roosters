@@ -22,6 +22,11 @@ export default Ember.ArrayController.extend({
 
 			handle(Ember.studentEngine);
 			handle(Ember.teacherEngine);
+		},
+		focus: function () {
+			$('#bloodhound .typeahead').typeahead('val', '');
+			this.set('searchValue', '');
+			$('#bloodhound .typeahead').focus();
 		}
 	}
 });
