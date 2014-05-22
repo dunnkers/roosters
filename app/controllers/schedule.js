@@ -25,11 +25,6 @@ export default Ember.ObjectController.extend({
 	actions: {
 		between: function (i, j) {
 			this.transitionToRoute('between', Ember.days[i], Ember.hours[j]);
-			var elem = $('#tussenuren').offset();
-			var offset = elem ? (elem.top) : $('.schedule').offset().bottom;
-			$('html, body').animate({
-				scrollTop: offset
-			}, 500);
 		}
 	}
 });

@@ -51,5 +51,15 @@ export default Ember.Route.extend({
 		});
 		filtered.reverse();
 		return filtered;
+	},
+	afterModel: function (model, transition) {
+		transition.then(function () {
+			var offset = $('#tussenuren').offset();
+			if (offset) {
+				$('html, body').animate({
+					scrollTop: offset.top
+				}, 600);
+			}
+		});
 	}
 });
