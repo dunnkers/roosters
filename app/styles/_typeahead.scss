@@ -44,6 +44,10 @@
 	-moz-box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 	box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 	width: 100%;
+
+	hr {
+		margin: 0;
+	}
 }
 
 .tt-suggestion {
@@ -57,12 +61,12 @@
 	}
 	
 	cursor: pointer;
+
+	p {
+		margin: 0;
+	}
 }
 
 .tt-suggestion.tt-cursor {
 	background-color: #eee;
-}
-
-.tt-suggestion p {
-	margin: 0;
 }
