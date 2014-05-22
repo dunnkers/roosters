@@ -7,7 +7,7 @@
 					h3.panel-title
 						a href=jaarlaag_id data-toggle="collapse" data-parent="#tussenuren"
 							= jaarlaag
-				div#jaarlaag class={:panel-collapse :collapse eigen_jaarlaag:in}
+				div id=jaarlaag class={:panel-collapse :collapse eigen_jaarlaag:in}
 					.panel-body
 						div.panel-group id=jaarlaag_klassen
 							each klassen
