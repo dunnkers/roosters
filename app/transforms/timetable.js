@@ -2,8 +2,8 @@ export default DS.Transform.extend({
 	deserialize: function(value) {
 		value = value.map(function(dag, i) {
 			return dag.map(function(uur, j){
-				uur.i = i;
-				uur.j = j;
+				uur.i = Ember.days[i];
+				uur.j = Ember.hours[j];
 				var nested = [];
 				_.forIn(uur, function (value, key) {
 					if (Number(key) || Number(key) === 0) {

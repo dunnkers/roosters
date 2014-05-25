@@ -20,7 +20,8 @@
 							th = uur
 						else
 							if between
-								td.tussenuur{action "between" i j} tussen
+								link-to "between" i j class="tussenuur" tagName="td"
+									link-to "between" i j | tussen
 							else
 								td class=examen:examenuur
 									if nested

@@ -41,9 +41,7 @@ html, body {
 	}
 
 	td a {
-		display: block;
-		width: 100%;
-		height: 100%;
+		color: inherit;
 	}
 
 	th {
@@ -68,14 +66,20 @@ html, body {
 		background-color: $speciaal_uur;
 	}
 
+	$tussenuur_bg: #D6F5FF;
+
 	.tussenuur {
-		background-color: $speciaal_uur;
+		/* background-color: $speciaal_uur; */
 		cursor: pointer;
 		text-decoration: underline;
 
 		&:hover {
-			background-color: #D6F5FF;
+			background-color: $tussenuur_bg;
 		}
+	}
+
+	.tussenuur.active {
+		background-color: $tussenuur_bg;
 	}
 }
 
