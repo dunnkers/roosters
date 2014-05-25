@@ -9,9 +9,6 @@ html, body {
 	margin: 20px;
 
 	@media (max-width: $screen-sm-min) {
-		margin-left: 0;
-		margin-right: 0;
-
 		[class*="col-"] {
 			padding-left: 5px;
 			padding-right: 5px;
@@ -25,6 +22,12 @@ html, body {
 	display: table;
 	margin: 0 auto;
 	padding: 150px 0;
+}
+
+@media print {
+	a[href]:after {
+		content: none !important;
+	}
 }
 
 /* schedule */
@@ -61,7 +64,7 @@ html, body {
 		text-overflow: ellipsis;
 	}
 
-	@media (max-width: $screen-sm-min) {
+	@media screen and (max-width: $screen-sm-min) {
 		/* http://www.bootply.com/9njmoY2CmS */
 		table-layout: fixed;
 		width: 100%;
@@ -79,7 +82,6 @@ html, body {
 	$tussenuur_bg: #D6F5FF;
 
 	.tussenuur {
-		/* background-color: $speciaal_uur; */
 		cursor: pointer;
 		text-decoration: underline;
 
@@ -114,11 +116,6 @@ html, body {
 
 		.panel-default > .panel-heading {
 			background-color: white;
-
-			span {
-				position: absolute;
-				right: 25px;
-			}
 		}
 	}
 }
