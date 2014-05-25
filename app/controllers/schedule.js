@@ -21,10 +21,5 @@ export default Ember.ObjectController.extend({
 
 		this.set('type', ret);
 		return ret;
-	},
-	actions: {
-		between: function (i, j) {
-			this.transitionToRoute('between', Ember.days[i], Ember.hours[j]);
-		}
 	}
 });

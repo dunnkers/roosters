@@ -8,19 +8,19 @@ export default Ember.View.extend({
 		}, {
 			name: 'students-search',
 			displayKey: 'unique',
-			source: Ember.studentEngine.ttAdapter()
+			source: self.controller.engines.students.ttAdapter()
 		}, {
 			name: 'teachers-search',
 			displayKey: 'unique',
-			source: Ember.teacherEngine.ttAdapter(),
+			source: self.controller.engines.teachers.ttAdapter(),
 			templates: {
 				header: '<hr>'
 			}
 		}).on('typeahead:selected', function (event, item) {
-			self.get('controller').set('searchValue', item.unique);
+			self.controller.set('searchValue', item.unique);
 			self.controller.send('search');
 		}).on('typeahead:autocompleted', function (event, item) {
-			self.get('controller').set('searchValue', item.unique);
+			self.controller.set('searchValue', item.unique);
 		}).focus();
 
 		// move the close icon next to typeahead
