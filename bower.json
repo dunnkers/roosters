@@ -15,6 +15,7 @@
     "bootstrap-sass-official": "*",
     "lodash": "~2.4.1",
     "typeahead.js": "~0.10.2",
-    "ember-google-analytics": "*"
+    "ember-google-analytics": "*",
+    "css-spinners": "~1.0.1"
   }
 }
