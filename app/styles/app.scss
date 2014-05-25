@@ -32,21 +32,27 @@ html, body {
 .schedule {
 	border: 1px solid black;
 
-	td, th {
-		font-size: 12px;
-		font-family: arial;
-		border: 1px solid black;
-		vertical-align: top;
-		padding: 2px;
-	}
+	tr {
+		td, th {
+			font-size: 12px;
+			font-family: arial;
+			border: 1px solid black;
+			vertical-align: top;
+			padding: 2px;
 
-	td a {
-		color: inherit;
-	}
+			@media (min-width: $screen-sm-min) {
+				padding: 3px;
+			}
+		}
 
-	th {
-		font-weight: normal;
-		background-color: rgb(220, 220, 220);
+		td a {
+			color: inherit;
+		}
+
+		th {
+			font-weight: normal;
+			background-color: rgb(220, 220, 220);
+		}
 	}
 
 	thead th {
@@ -60,6 +66,10 @@ html, body {
 		table-layout: fixed;
 		width: 100%;
 		overflow-wrap: break-word;
+		
+		tbody tr th, thead tr th:first-child {
+			width: 34px;
+		}
 	}
 
 	.examenuur {
@@ -104,6 +114,11 @@ html, body {
 
 		.panel-default > .panel-heading {
 			background-color: white;
+
+			span {
+				position: absolute;
+				right: 25px;
+			}
 		}
 	}
 }
