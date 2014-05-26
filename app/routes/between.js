@@ -18,7 +18,7 @@ export default Ember.Route.extend({
 		var store = this.store;
 		var students = ids.map(function (unique) {
 			var item = store.getById('student', unique) || 
-				this.store.find('student', unique);
+				store.find('student', unique);
 			return {
 				naam: item.get('naam'),
 				klas: item.get('klas'),
