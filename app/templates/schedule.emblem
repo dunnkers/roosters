@@ -34,4 +34,8 @@
 									else
 										= view "hour"
 
+	small.text-muted
+		' Bijgewerkt &ndash;
+		== format-date schedule.lastModified
+
 outlet

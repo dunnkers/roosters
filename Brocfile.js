@@ -23,6 +23,8 @@ app.import('vendor/ember-google-analytics/ember-google-analytics.js');
 var bootstrapJS = 'vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/';
 app.import(bootstrapJS + 'collapse.js');
 app.import(bootstrapJS + 'transition.js');
+app.import('vendor/moment/moment.js');
+app.import('vendor/moment/lang/nl.js');
 
 // If the library that you are including contains AMD or ES6 modules that
 // you would like to import into your application please specify an
