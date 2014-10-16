@@ -1,3 +1,5 @@
+import DS from 'ember-data';
+
 export default DS.RESTAdapter.extend({
-	host: 'https://api-roosters.rhcloud.com'
+  host: 'http://127.0.0.1:8080'
 });

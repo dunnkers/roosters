@@ -1,0 +1,16 @@
+<h1>Grades</h1>
+
+<ul>
+  {{#each model}}
+    <li>
+      <h3>{{id}}</h3>
+      <ul>
+        {{#each groups}}
+          <li>
+            <h4>{{id}}</h4>
+          </li>
+        {{/each}}
+      </ul>
+    </li>
+  {{/each}}
+</ul>

@@ -1,11 +1,14 @@
+import Ember from 'ember';
+import config from './config/environment';
+
 var Router = Ember.Router.extend({
-  location: ENV.locationType
+  location: config.locationType
 });
 
 Router.map(function() {
-	this.resource('schedule', { path: ':id' }, function() {
-		this.resource('between', { path: ':day/:hour' });
-	});
+  this.route('application');
+  this.route('grades');
+  this.route('schedule', { path: ':id' });
 });
 
 export default Router;

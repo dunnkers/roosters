@@ -1,0 +1,8 @@
+<h1>{{item.title}}</h2>({{id}})
+
+{{render "schedule-view" item.schedule.lessons}}
+
+<small>{{item.schedule.updatedAt}}</small>
+
+<h4>{{#link-to 'index'}}<< back to index{{/link-to}}</h3>
+

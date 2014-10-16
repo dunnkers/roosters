@@ -1,0 +1,26 @@
+html, body {
+  margin: 20px;
+}
+
+.schedule {
+  border: 1px solid black;
+}
+.schedule tr td, .schedule tr th {
+  font-size: 12px;
+  font-family: arial;
+  border: 1px solid black;
+  vertical-align: top;
+  padding: 2px;
+}
+.schedule tr td a {
+  color: inherit;
+}
+.schedule tr th {
+  font-weight: normal;
+  background-color: gainsboro;
+}
+.schedule thead th {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

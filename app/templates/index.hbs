@@ -1,0 +1,9 @@
+<h1>Index</h1>
+
+<ul>
+  {{#each model}}
+    <li>
+      {{#link-to 'schedule' this}}{{item.title}}{{/link-to}}
+    </li>
+  {{/each}}
+</ul>
