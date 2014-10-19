@@ -7,29 +7,22 @@ export default Ember.ArrayController.extend({
 
   rows: function () {
     return Ember.ArrayController.create({
-      model: groupBy(this.get('content'), 'index').map(function (row) {
+      model: groupBy(this.get('content'), 'index').map(function (row, index) {
+        var days = groupBy(row.get('content'), 'day');
+        days.insertAt(0, Ember.Object.create({
+          group: -1,
+          header: true,
+          index: index + 1
+        }));
+
         return Ember.ArrayController.create({
-          model: groupBy(row.get('content'), 'day'),
+          model: days,
           sortProperties: [ 'group' ],
           sortAscending: true
         });
       }),
       sortProperties: [ 'group' ],
       sortAscending: true
-    });
-  }.property('content.@each.index'),
-
-  table: function () {
-
-    var grouped = groupBy(this.get('content'), 'index');
-
-    return grouped.map(function (row) {
-      return groupBy(row.get('content'), 'day');
-    }).map(function (row, index) {
-      return row.insertAt(0, Ember.Object.create({
-        index: index + 1,
-        header: true
-      }));
     });
   }.property('content.@each.index')
 });
