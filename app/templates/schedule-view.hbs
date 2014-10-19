@@ -10,7 +10,7 @@
 </tr>
 </thead>
 <tbody>
-{{#each table}}
+{{#each rows}}
 
   <tr>
   {{#each this}}
@@ -44,43 +44,5 @@
   </tr>
 
 {{/each}}
-</tbody>
-</table>
-
-
-<table class="schedule">
-<tbody>
-  {{#each rows}}
-    <tr>
-      {{#each days}}
-          <td>
-        {{#each content}}
-            {{subject}}<br />
-            {{teacher.id}}<br />
-            {{room.id}}
-        {{/each}}
-          </td>
-      {{/each}}
-    </tr>
-  {{/each}}
-</tbody>
-</table>
-
-
-<table class="schedule">
-<tbody>
-  {{#each rowz}}
-    <tr>
-      {{#each days}}
-          <td>
-        {{#each content}}
-            {{subject}}<br />
-            {{teacher.id}}<br />
-            {{room.id}}
-        {{/each}}
-          </td>
-      {{/each}}
-    </tr>
-  {{/each}}
 </tbody>
 </table>

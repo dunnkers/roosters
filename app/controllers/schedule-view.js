@@ -1,28 +1,21 @@
 import Ember from 'ember';
 import groupBy from '../utils/group-by';
-import Row from './row-controller';
 
 export default Ember.ArrayController.extend({
   sortProperties: [ 'group' ],
   sortAscending: false,
 
-  rowz: function () {
+  rows: function () {
     return Ember.ArrayController.create({
       model: groupBy(this.get('content'), 'index').map(function (row) {
-        return Row.create({
-          model: row.get('content')
+        return Ember.ArrayController.create({
+          model: groupBy(row.get('content'), 'day'),
+          sortProperties: [ 'group' ],
+          sortAscending: true
         });
       }),
       sortProperties: [ 'group' ],
-      sortAscending: false
-    });
-  }.property('content.@each.index'),
-
-  rows: function () {
-    return groupBy(this.get('content'), 'index').map(function (row) {
-      return Row.create({
-        model: row.get('content')
-      });
+      sortAscending: true
     });
   }.property('content.@each.index'),
 
