@@ -27,6 +27,7 @@
           {{else}}
               {{#unless empty}}
         		      {{subject}}
+                  {{group.id}}{{cluster.id}}
                   <br/>
                   <div {{bind-attr title=teacher.name}}>
           		      {{#link-to 'schedule' teacher.id}}

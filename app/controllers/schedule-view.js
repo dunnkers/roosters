@@ -7,8 +7,11 @@ export default Ember.ArrayController.extend({
 
   rows: function () {
     return Ember.ArrayController.create({
+      // group rows (days)
       model: groupBy(this.get('content'), 'index').map(function (row, index) {
+        // group cells
         var days = groupBy(row.get('content'), 'day');
+
         days.insertAt(0, Ember.Object.create({
           group: -1,
           header: true,
