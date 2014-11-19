@@ -26,18 +26,26 @@
             tussen
           {{else}}
               {{#unless empty}}
-        		      {{subject}}
-                  {{group.id}}{{cluster.id}}
+                  {{subject}}
+                  {{#if cluster}}
+                    — {{cluster.id}}
+                  {{/if}}
                   <br/>
-                  <div {{bind-attr title=teacher.name}}>
-          		      {{#link-to 'schedule' teacher.id}}
-          		        {{teacher.id}}
-          		      {{/link-to}}
-                    </div>
-                  {{#link-to 'schedule' room.id}} {{room.id}}
-                  {{/link-to}}
+
+                  {{#each teachers}}
+                    <span {{bind-attr title=name}}>
+                      {{#link-to 'schedule' id}}{{id}}{{/link-to}}
+                    </span>
+                  {{/each}}
+
+                  <br />
+
+                  {{#each rooms}}
+                    {{#link-to 'schedule' id}}{{id}}{{/link-to}}
+                  {{/each}}
               {{/unless}}
           {{/if}}
+
   	    {{/each}}
       {{/if}}
     </td>
