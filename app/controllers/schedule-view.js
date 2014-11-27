@@ -14,31 +14,38 @@ export default Ember.ArrayController.extend({
 
         // group siblings
         days = days.map(function (lesson) {
-            var siblings = groupBy(lesson.get('content'), 'cluster.id');
+          // decide to display nested or not
+          var length = lesson.get('content.length');
 
-            siblings = siblings.map(function (sibling) {
-              var content = Ember.Object.create({
-                subject: sibling.get('content.firstObject.subject'),
-                cluster: sibling.get('content.firstObject.cluster'),
-                groups: [],
-                rooms: [],
-                teachers: []
-              });
+          // we are now on day/index level. -> we still can have multiple lessons.
+          var siblings = groupBy(lesson.get('content'), 'cluster.id');
 
-              sibling.get('content').forEach(function (lesson) {
-                if (lesson.get('group')) content.groups.push(lesson.get('group'));
-                if (lesson.get('room')) content.rooms.push(lesson.get('room'));
-                if (lesson.get('teacher')) content.teachers.push(lesson.get('teacher'));
-              });
-
-              return content;
+          siblings = siblings.map(function (sibling) {
+            // this is lesson level.
+            var content = Ember.Object.create({
+              subject: sibling.get('content.firstObject.subject'),
+              cluster: sibling.get('content.firstObject.cluster'),
+              groups: [],
+              rooms: [],
+              teachers: []
             });
 
-            return Ember.ArrayController.create({
-              model: siblings,
-              sortProperties: [ 'group' ],
-              sortAscending: true
+            sibling.get('content').forEach(function (lesson) {
+              if (lesson.get('group')) content.groups.push(lesson.get('group'));
+              if (lesson.get('room')) content.rooms.push(lesson.get('room'));
+              if (lesson.get('teacher')) content.teachers.push(lesson.get('teacher'));
             });
+
+            return content;
+          });
+
+          return Ember.ArrayController.create({
+            model: siblings,
+            sortProperties: [ 'group' ],
+            sortAscending: true,
+            group: lesson.group,
+            nested: siblings.length > 1
+          });
         });
 
         days.insertAt(0, Ember.Object.create({
@@ -50,6 +57,7 @@ export default Ember.ArrayController.extend({
         return Ember.ArrayController.create({
           model: days,
           sortProperties: [ 'group' ],
+          // actual day ordering
           sortAscending: true
         });
       }),

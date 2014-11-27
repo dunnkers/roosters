@@ -21,32 +21,49 @@
       {{#if header}}
       	u{{index}}
       {{else}}
-  	    {{#each content}}
-          {{#if between}}
-            tussen
-          {{else}}
-              {{#unless empty}}
-                  {{subject}}
-                  {{#if cluster}}
-                    — {{cluster.id}}
-                  {{/if}}
-                  <br/>
+        {{#if nested}}
+          <small>nested</small>
+          <table>
+            <tbody>
+              {{#each content}}
+                <tr>
+                  <td>
+                    {{lesson-component lesson=this}}
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        {{else}}
+          <small>-not- nested</small>
+      	    {{#each content}}
 
-                  {{#each teachers}}
-                    <span {{bind-attr title=name}}>
-                      {{#link-to 'schedule' id}}{{id}}{{/link-to}}
-                    </span>
-                  {{/each}}
+              {{#if between}}
+                tussen
+              {{else}}
+                  {{#unless empty}}
+                      {{subject}}
+                      {{#if cluster}}
+                        — {{cluster.id}}
+                      {{/if}}
+                      <br/>
 
-                  <br />
+                      {{#each teachers}}
+                        <span {{bind-attr title=name}}>
+                          {{#link-to 'schedule' id}}{{id}}{{/link-to}}
+                        </span>
+                      {{/each}}
 
-                  {{#each rooms}}
-                    {{#link-to 'schedule' id}}{{id}}{{/link-to}}
-                  {{/each}}
-              {{/unless}}
-          {{/if}}
+                      <br />
 
-  	    {{/each}}
+                      {{#each rooms}}
+                        {{#link-to 'schedule' id}}{{id}}{{/link-to}}
+                      {{/each}}
+                  {{/unless}}
+              {{/if}}
+
+      	    {{/each}}
+        {{/if}}
       {{/if}}
     </td>
 
