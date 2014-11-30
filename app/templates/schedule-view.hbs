@@ -22,47 +22,25 @@
       	u{{index}}
       {{else}}
         {{#if nested}}
-          <small>nested</small>
           <table>
             <tbody>
               {{#each content}}
                 <tr>
                   <td>
-                    {{lesson-component lesson=this}}
+
+
+                    {{partial "cell"}}
+
+
                   </td>
                 </tr>
               {{/each}}
             </tbody>
           </table>
         {{else}}
-          <small>-not- nested</small>
-      	    {{#each content}}
+            {{partial "cell"}}
 
-              {{#if between}}
-                tussen
-              {{else}}
-                  {{#unless empty}}
-                      {{subject}}
-                      {{#if cluster}}
-                        — {{cluster.id}}
-                      {{/if}}
-                      <br/>
 
-                      {{#each teachers}}
-                        <span {{bind-attr title=name}}>
-                          {{#link-to 'schedule' id}}{{id}}{{/link-to}}
-                        </span>
-                      {{/each}}
-
-                      <br />
-
-                      {{#each rooms}}
-                        {{#link-to 'schedule' id}}{{id}}{{/link-to}}
-                      {{/each}}
-                  {{/unless}}
-              {{/if}}
-
-      	    {{/each}}
         {{/if}}
       {{/if}}
     </td>

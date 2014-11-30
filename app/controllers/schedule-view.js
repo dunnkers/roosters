@@ -14,11 +14,19 @@ export default Ember.ArrayController.extend({
 
         // group siblings
         days = days.map(function (lesson) {
-          // decide to display nested or not
-          var length = lesson.get('content.length');
+          // not nested. no siblings.
+          if (!(lesson.get('content.length') > 1)) {
+            var first = lesson.get('content.firstObject');
+
+            first.nested = false;
+            first.siblings = false;
+
+            return first;
+          }
 
           // we are now on day/index level. -> we still can have multiple lessons.
           var siblings = groupBy(lesson.get('content'), 'cluster.id');
+
 
           siblings = siblings.map(function (sibling) {
             // this is lesson level.
@@ -44,7 +52,8 @@ export default Ember.ArrayController.extend({
             sortProperties: [ 'group' ],
             sortAscending: true,
             group: lesson.group,
-            nested: siblings.length > 1
+            nested: siblings.length > 1,
+            siblings: true
           });
         });
 

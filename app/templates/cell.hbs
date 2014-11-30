@@ -1,0 +1,43 @@
+{{#if siblings}}
+      {{subject}}
+      {{#if cluster}}
+        — {{cluster.id}}
+      {{/if}}
+      <br/>
+
+      {{#each teachers}}
+        <span {{bind-attr title=name}}>
+          {{#link-to 'schedule' id}}{{id}}{{/link-to}}
+        </span>
+      {{/each}}
+
+      <br />
+
+      {{#each rooms}}
+        {{#link-to 'schedule' id}}{{id}}{{/link-to}}
+      {{/each}}
+
+{{else}}
+  {{#if between}}
+    <small>tussen</small>
+  {{else}}
+      {{#if empty}}
+        <small>empty</small>
+      {{else}}
+        {{subject}}
+
+        {{#if cluster}}
+        — {{cluster.id}}
+        {{/if}}
+        <br/>
+
+        <span {{bind-attr title=teacher.name}}>
+          {{#link-to 'schedule' teacher.id}}{{teacher.id}}{{/link-to}}
+        </span>
+        <br/>
+
+        {{#link-to 'schedule' room.id}}{{room.id}}{{/link-to}}
+      {{/if}}
+
+  {{/if}}
+{{/if}}
