@@ -39,9 +39,15 @@ export default Ember.ArrayController.extend({
             });
 
             sibling.get('content').forEach(function (lesson) {
-              if (lesson.get('group')) content.groups.push(lesson.get('group'));
-              if (lesson.get('room')) content.rooms.push(lesson.get('room'));
-              if (lesson.get('teacher')) content.teachers.push(lesson.get('teacher'));
+              if (lesson.get('group')) {
+                content.groups.push(lesson.get('group'));
+              }
+              if (lesson.get('room')) {
+                content.rooms.push(lesson.get('room'));
+              }
+              if (lesson.get('teacher')) {
+                content.teachers.push(lesson.get('teacher'));
+              }
             });
 
             return content;

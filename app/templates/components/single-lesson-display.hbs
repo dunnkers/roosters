@@ -1,0 +1,9 @@
+{{#if lesson.between}}
+  tussen
+{{else}}
+    {{#unless lesson.empty}}
+        {{lesson.subject}}<br />
+        {{lesson.teacher.id}}<br />
+        {{lesson.room.id}}
+    {{/unless}}
+{{/if}}

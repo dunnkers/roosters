@@ -1,0 +1,12 @@
+{{#if single}}
+  {{single-lesson-display lesson=lesson}}
+{{else}}
+
+  nested={{nested}}
+  sibling={{sibling}}
+
+  {{#each lessons}}
+      {{subject}}
+  {{/each}}
+
+{{/if}}
