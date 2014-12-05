@@ -2,8 +2,15 @@
   tussen
 {{else}}
     {{#unless lesson.empty}}
+        {{#if lesson.audience}}
+          <div style="float: right;">
+            <small>{{lesson.audience.id}}</small>
+          </div>
+        {{/if}}
+
         {{lesson.subject}}<br />
         {{lesson.teacher.id}}<br />
         {{lesson.room.id}}
+
     {{/unless}}
 {{/if}}

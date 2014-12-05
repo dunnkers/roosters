@@ -1,12 +1,28 @@
 {{#if single}}
-  {{single-lesson-display lesson=lesson}}
+  {{lesson-display lesson=lesson}}
 {{else}}
 
-  nested={{nested}}
-  sibling={{sibling}}
+  {{#if isNested}}
 
-  {{#each lessons}}
-      {{subject}}
-  {{/each}}
+    <table>
+      <tbody>
+        {{#each nested}}
+          <tr>
+            <td>
+
+
+              <small>group</small> {{subject}}|{{cluster.id}}<br />
+
+
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+  {{else}}
+    <small>single sibling.</small><br />
+  {{/if}}
+
 
 {{/if}}
