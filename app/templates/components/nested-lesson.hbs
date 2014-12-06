@@ -1,5 +1,19 @@
-{{#if single}}
-  {{lesson-display lesson=lesson}}
+{{#if isNested}}
+
+  <table>
+    <tbody>
+      {{#each nested}}
+        <tr>
+          <td>
+
+            {{cell-display lessons=content}}
+
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
 {{else}}
-  {{sibling-lesson siblings=lessons}}
+    {{sibling-lesson siblings=siblings.content}}
 {{/if}}

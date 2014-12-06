@@ -2,27 +2,6 @@
   {{lesson-display lesson=lesson}}
 {{else}}
 
-  {{#if isNested}}
-
-    <table>
-      <tbody>
-        {{#each nested}}
-          <tr>
-            <td>
-
-
-              <small>group</small> {{subject}}|{{cluster.id}}<br />
-              {{nested-lesson lessons=content}}
-
-            </td>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
-
-  {{else}}
-      {{sibling-lesson siblings=siblings.content}}
-  {{/if}}
-
+  {{nested-lesson lessons=lessons}}
 
 {{/if}}
