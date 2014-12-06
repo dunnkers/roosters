@@ -12,7 +12,7 @@
 
 
               <small>group</small> {{subject}}|{{cluster.id}}<br />
-
+              {{nested-lesson lessons=content}}
 
             </td>
           </tr>
@@ -21,7 +21,7 @@
     </table>
 
   {{else}}
-    <small>single sibling.</small><br />
+      {{sibling-lesson siblings=siblings.content}}
   {{/if}}
 
 
