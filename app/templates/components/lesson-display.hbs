@@ -9,8 +9,11 @@
         {{/if}}
 
         {{lesson.subject}}<br />
-        {{lesson.teacher.id}}<br />
-        {{lesson.room.id}}
+
+        {{#with lesson}}
+          {{partial "cell-teacher-display"}}<br />
+          {{partial "cell-room-display"}}
+        {{/with}}
 
     {{/unless}}
 {{/if}}

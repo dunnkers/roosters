@@ -1,0 +1,5 @@
+{{#if teacher.schedule}}
+    {{#link-to 'schedule' teacher.id title=teacher.name}}{{teacher.id}}{{/link-to}}
+{{else}}
+    {{teacher.id}}
+{{/if}}

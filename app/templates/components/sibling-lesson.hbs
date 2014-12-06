@@ -1,8 +1,11 @@
 {{subject}}<br />
+
 {{#each siblings}}
-  {{teacher.id}}
+    {{partial "cell-teacher-display"}}
 {{/each}}
+
 <br />
+
 {{#each siblings}}
-  {{room.id}}
+    {{partial "cell-room-display"}}
 {{/each}}
