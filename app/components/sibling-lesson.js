@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  subject: function () {
-    return this.get('siblings.firstObject.subject');
+  default: function () {
+    return this.get('siblings.firstObject');
   }.property('siblings')
 });

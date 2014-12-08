@@ -2,11 +2,9 @@
   tussen
 {{else}}
     {{#unless lesson.empty}}
-        {{#if lesson.audience}}
-          <div style="float: right;">
-            <small>{{lesson.audience.id}}</small>
-          </div>
-        {{/if}}
+        {{#with lesson}}
+            {{partial "cell-audience-display"}}
+        {{/with}}
 
         {{lesson.subject}}<br />
 

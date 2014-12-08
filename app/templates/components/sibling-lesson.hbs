@@ -1,4 +1,8 @@
-{{subject}}<br />
+{{#with default}}
+    {{partial "cell-audience-display"}}
+{{/with}}
+
+{{default.subject}}<br />
 
 {{#each siblings}}
     {{partial "cell-teacher-display"}}

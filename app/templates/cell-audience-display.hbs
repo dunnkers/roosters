@@ -1,0 +1,11 @@
+<div style="float: right;">
+  <small>
+    {{#if group}}
+        {{#link-to 'schedule' group.id}}{{group.id}}{{/link-to}}
+    {{else}}
+        {{#if cluster}}
+            {{cluster.id}}
+        {{/if}}
+    {{/if}}
+  </small>
+</div>
