@@ -14,7 +14,7 @@ export default Ember.ArrayController.extend({
           });
         }),
         sortProperties: [ 'group' ],
-        sortAscending: true
+        sortAscending: false
     });
   }.property('content.@each.index')
 });
