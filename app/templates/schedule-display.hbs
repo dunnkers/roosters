@@ -14,9 +14,13 @@
 
 {{#each row in rows}}
   <tr>
-  {{#each day in row}}
+  {{#each cell in row}}
     <td>
-      {{cell-display lessons=day.content}}
+      {{#if cell.header}}
+          u{{cell.index}}
+      {{else}}
+          {{cell-display lessons=cell.content}}
+      {{/if}}
     </td>
   {{/each}}
   </tr>
