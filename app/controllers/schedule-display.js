@@ -9,11 +9,11 @@ export default Ember.ArrayController.extend({
 
           return Ember.ArrayController.create({
             model: groupBy(row.get('content'), 'day'),
-            sortProperties: [ 'group' ],
+            sortProperties: [ 'day' ],
             sortAscending: true
           });
         }),
-        sortProperties: [ 'group' ],
+        sortProperties: [ 'index' ],
         sortAscending: false
     });
   }.property('content.@each.index')

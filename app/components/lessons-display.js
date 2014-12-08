@@ -1,9 +1,9 @@
 import Ember from 'ember';
-import groupByProperties from '../utils/group-by-properties';
+import groupBy from '../utils/group-by';
 
 export default Ember.Component.extend({
   nested: function () {
-    return groupByProperties(this.get('lessons'), [ 'subject', 'cluster.id' ]);
+    return groupBy(this.get('lessons'), 'subject', 'cluster.id' );
   }.property('lessons'),
 
   isNested: function () {
