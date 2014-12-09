@@ -2,27 +2,71 @@
 
 html, body {
   margin: 20px;
+
+  @media (max-width: $screen-sm-min) {
+    [class*="col-"], .container {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
+    margin: 5px 0 0;
+  }
 }
+
+.spinner {
+  display: table;
+  margin: 0 auto;
+  padding: 150px 0;
+}
+
+@media print {
+  a[href]:after {
+    content: none !important;
+  }
+}
+
+/* schedule */
 
 .schedule {
   border: 1px solid black;
-}
-.schedule tr td, .schedule tr th {
-  font-size: 12px;
-  font-family: arial;
-  border: 1px solid black;
-  vertical-align: top;
-  padding: 2px;
-}
-.schedule tr td a {
-  color: inherit;
-}
-.schedule tr th {
-  font-weight: normal;
-  background-color: gainsboro;
-}
-.schedule thead th {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+
+  tr {
+    td, th {
+      font-size: 12px;
+      font-family: arial;
+      border: 1px solid black;
+      vertical-align: top;
+      padding: 2px;
+
+      @media (min-width: $screen-sm-min) {
+        padding: 3px;
+      }
+    }
+
+    td a:not(:hover) {
+      color: inherit;
+    }
+
+    th {
+      font-weight: normal;
+      background-color: rgb(220, 220, 220);
+    }
+  }
+
+  thead th {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media screen and (max-width: $screen-sm-min) {
+    /* http://www.bootply.com/9njmoY2CmS */
+    table-layout: fixed;
+    width: 100%;
+    overflow-wrap: break-word;
+
+    tbody tr th, thead tr th:first-child {
+      width: 34px;
+    }
+  }
 }

@@ -1,8 +1,7 @@
-<h1>{{item.title}}</h2>({{id}})
+<div class="col-xs-12 col-sm-9 col-sm-push-3">
+    <h2>{{item.title}}</h2>
 
-{{render "schedule-display" item.schedule.lessons}}
+    {{render "schedule-display" item.schedule.lessons}}
 
-<small>{{item.schedule.updatedAt}}</small>
-
-<h4>{{#link-to 'index'}}<< back to index{{/link-to}}</h3>
-
+    <small class="text-muted">{{item.schedule.updatedAt}}</small>
+</div>
