@@ -29,7 +29,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-    ENV.contentSecurityPolicy['connect-src'] = "'self' http://127.0.0.1:8080";
+    ENV.apiUrl = 'http://127.0.0.1:8080';
   }
 
   if (environment === 'test') {
@@ -45,8 +45,10 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.contentSecurityPolicy['connect-src'] = "'self' http://api-roosters.rhcloud.";
+    ENV.apiUrl = 'https://api-roosters.rhcloud.com';
   }
+
+  ENV.contentSecurityPolicy['connect-src'] = "'self' " + ENV.apiUrl;
 
   return ENV;
 };
