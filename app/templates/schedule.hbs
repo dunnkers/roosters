@@ -3,5 +3,7 @@
 
     {{render "schedule-display" item.schedule.lessons}}
 
-    <small class="text-muted">{{item.schedule.updatedAt}}</small>
+    <small class="text-muted">
+      Bijgewerkt &ndash; {{ago item.schedule.updatedAt}}
+    </small>
 </div>
