@@ -15,13 +15,5 @@ export default DS.Model.extend({
 
   subject: DS.attr('string'),
 
-  schedules: DS.hasMany('schedule', { async: true }),
-
-  audience: function () {
-    if (this.get('group')) {
-      return this.get('group');
-    }
-
-    return this.get('cluster');
-  }.property('cluster', 'group')
+  schedules: DS.hasMany('schedule', { async: true })
 });

@@ -2,16 +2,16 @@
   tussen
 {{else}}
     {{#unless lesson.empty}}
+        {{lesson.subject}}
+
         {{#with lesson}}
             {{partial "cell-audience-display"}}
         {{/with}}
-
-        {{lesson.subject}}<br />
+        <br />
 
         {{#with lesson}}
           {{partial "cell-teacher-display"}}<br />
           {{partial "cell-room-display"}}
         {{/with}}
-
     {{/unless}}
 {{/if}}

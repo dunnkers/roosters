@@ -1,11 +1,11 @@
-<div>
-  <small>
-    {{#if group}}
-        {{#link-to 'schedule' group.id}}{{group.id}}{{/link-to}}
-    {{else}}
-        {{#if cluster}}
-            {{cluster.id}}
-        {{/if}}
+{{#if group}}
+    <small class="pull-right">
+      {{#link-to 'schedule' group.id}}{{group.id}}{{/link-to}}
+    </small>
+{{else}}
+    {{#if cluster}}
+        <small class="pull-right">
+          {{cluster.id}}
+        </small>
     {{/if}}
-  </small>
-</div>
+{{/if}}
