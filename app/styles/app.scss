@@ -1,12 +1,17 @@
 @import "bootstrap";
+@import "typeahead";
 
 html, body {
   margin: 20px;
 
   @media (max-width: $screen-sm-min) {
-    [class*="col-"], .container {
+    [class*="col-"] {
       padding-left: 5px;
       padding-right: 5px;
+    }
+
+    .container {
+      padding: 0;
     }
 
     margin: 5px 0 0;
