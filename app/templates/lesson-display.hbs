@@ -1,0 +1,17 @@
+{{#with lesson}}
+
+  {{#if between}}
+    tussen
+  {{else}}
+      {{#unless empty}}
+          {{subject}}
+
+          {{partial "cell-audience-display"}}
+          <br />
+
+          {{partial "cell-teacher-display"}}<br />
+          {{partial "cell-room-display"}}
+      {{/unless}}
+  {{/if}}
+
+{{/with}}
