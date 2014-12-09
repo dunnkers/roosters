@@ -16,6 +16,9 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    contentSecurityPolicy: {
+      // Content-Security-Policy
     }
   };
 
@@ -25,6 +28,8 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    ENV.contentSecurityPolicy['connect-src'] = "'self' http://127.0.0.1:8080";
   }
 
   if (environment === 'test') {
@@ -40,7 +45,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.contentSecurityPolicy['connect-src'] = "'self' http://api-roosters.rhcloud.";
   }
 
   return ENV;
