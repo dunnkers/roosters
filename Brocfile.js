@@ -8,6 +8,7 @@ var app = new EmberApp({
   }
 });
 
+app.import(app.bowerDirectory + '/typeahead.js/dist/typeahead.bundle.js');
 app.import(app.bowerDirectory + '/moment/locale/nl.js');
 
 // Use `app.import` to add additional libraries to the generated
