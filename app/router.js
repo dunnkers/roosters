@@ -6,8 +6,6 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function () {
-  this.route('application');
-  this.route('grades');
   this.route('schedule', { path: ':id' });
 
   this.route('index', { path: '/' }, function () {
