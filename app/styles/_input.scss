@@ -1,0 +1,64 @@
+#bloodhound {
+  .twitter-typeahead {
+    width: 100%;
+  }
+
+  @media(max-width: $screen-md-min) {
+    .typeahead {
+      padding-right: 28px;
+    }
+
+    /* http://codepen.io/shidhincr/pen/ICLBD */
+    .close-icon {
+      display: block;
+      vertical-align: middle;
+      outline: 0;
+      cursor: pointer;
+
+      z-index: 200;
+    }
+
+    .close-icon:after {
+      content: "×";
+      display: block;
+      width: 25px;
+      height: 30px;
+
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 10px;
+
+      padding: 9px 3px;
+      text-align: center;
+      cursor: pointer;
+      font: 27px/13px arial, sans-serif;
+      color: #a1b9ed;
+
+      z-index: 300;
+    }
+  }
+
+  .tt-input:invalid ~ .close-icon {
+    display: none;
+  }
+
+  // Override Firefox invalid red glow
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid
+  :invalid {
+    box-shadow: none;
+  }
+
+  :-moz-submit-invalid {
+    box-shadow: none;
+  }
+
+  :-moz-ui-invalid {
+    box-shadow:none;
+  }
+
+  // Don't show IE clear button
+  .typeahead::-ms-clear {
+    display: none;
+  }
+}
