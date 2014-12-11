@@ -1,0 +1,13 @@
+<div class="col-sm-4">
+  <h3>{{id}}</h3>
+
+  <div class="list-group">
+    {{#each group in sortedGroups}}
+        {{#link-to 'grade.group' group class="list-group-item"}}
+          {{group.id}}
+        {{/link-to}}
+    {{/each}}
+  </div>
+</div>
+
+{{outlet}}

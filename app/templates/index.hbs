@@ -1,9 +1,13 @@
-<h1>Index</h1>
+<div class="col-sm-4">
+  <h3>Grades</h3>
 
-<ul>
-  {{#each model}}
-    <li>
-      {{#link-to 'schedule' this}}{{item.title}}{{/link-to}}
-    </li>
-  {{/each}}
-</ul>
+  <div class="list-group">
+    {{#each grade in grades}}
+        {{#link-to 'grade' grade class="list-group-item"}}
+          {{grade.id}}
+        {{/link-to}}
+    {{/each}}
+  </div>
+</div>
+
+{{outlet}}

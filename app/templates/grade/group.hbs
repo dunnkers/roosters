@@ -1,0 +1,11 @@
+<div class="col-sm-4">
+  <h3>{{id}}</h3>
+
+  <div class="list-group">
+    {{#each student in model.students}}
+        {{#link-to 'schedule' student.id class="list-group-item"}}
+          {{student.name}}
+        {{/link-to}}
+    {{/each}}
+  </div>
+</div>
