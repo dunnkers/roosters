@@ -2,7 +2,7 @@
   <h3>{{id}}</h3>
 
   <div class="list-group">
-    {{#each student in model.students}}
+    {{#each student in sortedStudents}}
         {{#link-to 'schedule' student.id class="list-group-item"}}
           {{student.name}}
         {{/link-to}}

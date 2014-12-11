@@ -10,6 +10,7 @@ export default Ember.TextField.extend({
   }.on('didInsertElement'),
 
   initializeTypeahead: function () {
+    /* BLOODHOUND */
     var engine = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -29,7 +30,14 @@ export default Ember.TextField.extend({
         name: 'superman'
       }]);
 
+    engine.initialize().done(function () {
+      Ember.Logger.debug('Suggestion engine successfully initialized.');
+    }).fail(function () {
+      Ember.Logger.debug('Failed to initialize suggestion engine');
+    });
 
+
+    /* TYPEAHEAD */
     var element = $('.typeahead').typeahead({
       highlight: true
     }, {
@@ -59,12 +67,6 @@ export default Ember.TextField.extend({
     element.on('typeahead:autoCompleted', function (event, item, dataset) {
       Ember.Logger.debug('Auto completed event: ', event,
         '. For item: ', item, '. Dataset: ', dataset);
-    });
-
-    engine.initialize().done(function () {
-      Ember.Logger.debug('Suggestion engine successfully initialized.');
-    }).fail(function () {
-      Ember.Logger.debug('Failed to initialize suggestion engine');
     });
   }.on('didInsertElement')
 
