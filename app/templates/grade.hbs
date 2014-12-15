@@ -1,6 +1,10 @@
 <div class="col-sm-4">
   <h3>{{id}}</h3>
 
+  {{#if clusters}}
+    <h4>Groups</h4>
+  {{/if}}
+
   <div class="list-group">
     {{#each group in sortedGroups}}
         {{#link-to 'grade.group' group class="list-group-item"}}
@@ -8,6 +12,18 @@
         {{/link-to}}
     {{/each}}
   </div>
+
+  {{#if clusters}}
+    <h4>Clusters</h4>
+
+    <div class="list-group">
+      {{#each cluster in clusters}}
+          {{#link-to 'grade.group' cluster class="list-group-item"}}
+            {{cluster.id}}
+          {{/link-to}}
+      {{/each}}
+    </div>
+  {{/if}}
 </div>
 
 {{outlet}}
