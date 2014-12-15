@@ -7,13 +7,7 @@ export default Item.extend({
   grade: DS.attr('string'),
   group: DS.attr('string'),
 
-  name: function () {
-    return '%@ %@'.fmt(this.get('firstName'), this.get('lastName'));
-  }.property('firstName', 'lastName'),
-
   title: function () {
-    return '%@ (%@)'.fmt(
-      this.get('name'), this.get('group')
-    );
-  }.property('name', 'group')
+    return '%@ %@'.fmt(this.get('firstName'), this.get('lastName'));
+  }.property('firstName', 'lastName')
 });

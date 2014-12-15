@@ -12,23 +12,10 @@ export default Ember.TextField.extend({
   initializeTypeahead: function () {
     /* BLOODHOUND */
     var engine = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: []
+      local: this.get('content')
     });
-
-    engine.add([{
-        name: 'dude'
-      },
-      {
-        name: 'man'
-      },
-      {
-        name: 'mandude'
-      },
-      {
-        name: 'superman'
-      }]);
 
     engine.initialize().done(function () {
       Ember.Logger.debug('Suggestion engine successfully initialized.');
@@ -41,10 +28,11 @@ export default Ember.TextField.extend({
     var element = $('.typeahead').typeahead({
       highlight: true
     }, {
-      name: 'items-search',
-      displayKey: 'name',
+      displayKey: 'title',
       source: engine.ttAdapter()
     });
+
+    var self = this;
 
     /*element.on('typeahead:opened', function (event, item) {
       Ember.Logger.debug('Opened event: ', event, '. For item: ', item);
@@ -54,7 +42,7 @@ export default Ember.TextField.extend({
       Ember.Logger.debug('Closed event: ', event, '. For item: ', item);
     });*/
 
-    element.on('typeahead:cursorChanged', function (event, item, dataset) {
+    element.on('typeahead:cursorchanged', function (event, item, dataset) {
       Ember.Logger.debug('Cursor changed event: ', event,
         '. For item: ', item, '. Dataset: ', dataset);
     });
@@ -62,9 +50,11 @@ export default Ember.TextField.extend({
     element.on('typeahead:selected', function (event, item, dataset) {
       Ember.Logger.debug('Selected event: ', event,
         '. For item: ', item, '. Dataset: ', dataset);
+      // ensure also ember's textfield value is set.
+      self.set('value', item.title);
     });
 
-    element.on('typeahead:autoCompleted', function (event, item, dataset) {
+    element.on('typeahead:autocompleted', function (event, item, dataset) {
       Ember.Logger.debug('Auto completed event: ', event,
         '. For item: ', item, '. Dataset: ', dataset);
     });

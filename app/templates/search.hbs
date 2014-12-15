@@ -1,8 +1,9 @@
 <div class="row hidden-print">
   <div class="col-xs-12 col-sm-7 col-md-5 col-lg-4 col-sm-offset-3">
+    <h5><span class="text-muted">Value = </small>{{selection}}</h5>
     <form>
       <div id="bloodhound">
-        {{typeahead-field type="search" placeholder="Zoek..." required="true"}}
+        {{typeahead-field content=items type="search" value=selection placeholder="Zoek..." required="true"}}
       </div>
     </form>
   </div>

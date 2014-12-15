@@ -7,4 +7,5 @@ export default Item.extend({
   title: function () {
     return '%@, %@'.fmt(this.get('id'), this.get('name'));
   }.property('id', 'name')
+
 });

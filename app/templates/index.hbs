@@ -1,5 +1,5 @@
 
-{{render "search"}}
+{{render "search" model.items}}
 
 
 <div class="row">
@@ -7,7 +7,7 @@
       <h3>Grades</h3>
 
       <div class="list-group">
-        {{#each grade in grades}}
+        {{#each grade in gradesSorted}}
             {{#link-to 'grade' grade class="list-group-item"}}
               {{grade.id}}
             {{/link-to}}
