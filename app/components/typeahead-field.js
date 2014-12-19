@@ -4,60 +4,55 @@ export default Ember.TextField.extend({
   classNames: [ 'typeahead' ],
   action: 'search',
 
-  // Ember cookbook: FOCUSING A TEXTFIELD AFTER IT'S BEEN INSERTED
-  becomeFocused: function () {
-    this.$().focus();
-  }.on('didInsertElement'),
-
-  initializeTypeahead: function () {
-    /* BLOODHOUND */
-    var engine = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+  initializeBloodhound: function () {
+    var bloodhound = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('item.title'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: this.get('content')
+      local: this.get('content').map(function (item) {
+          return item.getProperties('item.id', 'item.title');
+      })
     });
 
-    engine.initialize().done(function () {
+    bloodhound.initialize().done(function () {
       Ember.Logger.debug('Suggestion engine successfully initialized.');
     }).fail(function () {
       Ember.Logger.debug('Failed to initialize suggestion engine');
     });
 
+    this.set('engine', bloodhound);
 
-    /* TYPEAHEAD */
-    var element = $('.typeahead').typeahead({
+  }.on('init'),
+
+  initializeTypeahead: function () {
+    var element = Ember.$('.typeahead').typeahead({
       highlight: true
     }, {
-      displayKey: 'title',
-      source: engine.ttAdapter()
+      displayKey: 'item.title',
+      source: this.get('engine').ttAdapter()
     });
 
-    var self = this;
-
-    /*element.on('typeahead:opened', function (event, item) {
-      Ember.Logger.debug('Opened event: ', event, '. For item: ', item);
+    // ensure textfield value is changed immediately
+    element.on('typeahead:selected', (event, item, dataset) => {
+      this.set('value', item['item.title']);
     });
+  }.on('didInsertElement'),
 
-    element.on('typeahead:closed', function (event, item) {
-      Ember.Logger.debug('Closed event: ', event, '. For item: ', item);
-    });*/
+  // Ember cookbook: Focusing a textfield after it's been inserted
+  becomeFocused: function () {
+    this.$().focus();
+  }.on('didInsertElement'),
 
-    element.on('typeahead:cursorchanged', function (event, item, dataset) {
-      Ember.Logger.debug('Cursor changed event: ', event,
-        '. For item: ', item, '. Dataset: ', dataset);
+  insertNewline: function (ev) {
+    this.get('engine').get(this.get('value'), (suggestions) => {
+      var suggestion = suggestions.get('firstObject');
+
+      if (suggestion) {
+        this.set('value', suggestion['item.title']);
+
+        // send action
+        var object = this.get('content').findBy('item.id', suggestion['item.id']);
+        this.sendAction('search', object);
+      }
     });
-
-    element.on('typeahead:selected', function (event, item, dataset) {
-      Ember.Logger.debug('Selected event: ', event,
-        '. For item: ', item, '. Dataset: ', dataset);
-      // ensure also ember's textfield value is set.
-      self.set('value', item.title);
-    });
-
-    element.on('typeahead:autocompleted', function (event, item, dataset) {
-      Ember.Logger.debug('Auto completed event: ', event,
-        '. For item: ', item, '. Dataset: ', dataset);
-    });
-  }.on('didInsertElement')
-
+  }
 });

@@ -3,7 +3,7 @@
     <h5><span class="text-muted">Value = </small>{{selection}}</h5>
     <form>
       <div id="bloodhound">
-        {{typeahead-field content=items type="search" value=selection placeholder="Zoek..." required="true"}}
+        {{typeahead-field content=content.content type="search" value=selection placeholder="Zoek..." required="true" search="search"}}
       </div>
     </form>
   </div>
