@@ -9,8 +9,7 @@ export default Ember.ArrayController.extend({
 
   actions: {
     search: function (param, param2) {
-      console.log('we searched! ', param, ',: ', param2);
-      this.transitionToRoute('schedule', param.id);
+      this.transitionToRoute('schedule', param);
     }
   }
 });

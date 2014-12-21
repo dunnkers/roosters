@@ -23,6 +23,11 @@ export default Ember.TextField.extend({
 
   }.on('init'),
 
+  // Ember cookbook: Focusing a textfield after it's been inserted
+  becomeFocused: function () {
+    this.$().focus();
+  }.on('didInsertElement'),
+
   initializeTypeahead: function () {
     var element = Ember.$('.typeahead').typeahead({
       highlight: true
@@ -35,11 +40,6 @@ export default Ember.TextField.extend({
     element.on('typeahead:selected', (event, item, dataset) => {
       this.set('value', item['item.title']);
     });
-  }.on('didInsertElement'),
-
-  // Ember cookbook: Focusing a textfield after it's been inserted
-  becomeFocused: function () {
-    this.$().focus();
   }.on('didInsertElement'),
 
   insertNewline: function (ev) {
