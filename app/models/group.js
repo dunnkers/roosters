@@ -3,5 +3,5 @@ import Item from './item';
 
 export default Item.extend({
   grade: DS.belongsTo('grade'),
-  students: DS.hasMany('student', { async: true })
+  students: DS.hasMany('student', { async: true, inverse: 'group' })
 });
