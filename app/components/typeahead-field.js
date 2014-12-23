@@ -1,4 +1,6 @@
 import Ember from 'ember';
+// JSHint exception
+/* global Bloodhound */
 
 export default Ember.TextField.extend({
   classNames: [ 'typeahead' ],
@@ -37,12 +39,12 @@ export default Ember.TextField.extend({
     });
 
     // ensure textfield value is changed immediately
-    element.on('typeahead:selected', (event, item, dataset) => {
+    element.on('typeahead:selected', (event, item) => {
       this.set('value', item['item.title']);
     });
   }.on('didInsertElement'),
 
-  insertNewline: function (ev) {
+  insertNewline: function () {
     this.get('engine').get(this.get('value'), (suggestions) => {
       var suggestion = suggestions.get('firstObject');
 
