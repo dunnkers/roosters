@@ -1,11 +1,11 @@
-{{#if group}}
+{{#if lesson.group}}
     <small class="pull-right">
-      {{#link-to 'schedule' group.id}}{{group.id}}{{/link-to}}
+      {{#link-to 'schedule' lesson.group.id}}{{lesson.group.id}}{{/link-to}}
     </small>
 {{else}}
-    {{#if cluster}}
+    {{#if lesson.cluster}}
         <small class="pull-right">
-          {{cluster.id}}
+          {{lesson.cluster.id}}
         </small>
     {{/if}}
 {{/if}}

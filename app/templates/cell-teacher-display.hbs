@@ -1,1 +1,3 @@
-{{#link-to 'schedule' teacher.id title=teacher.name}}{{teacher.id}}{{/link-to}}
+{{#link-to 'schedule' lesson.teacher.id title=lesson.teacher.name}}
+    {{lesson.teacher.id}}
+{{/link-to}}

@@ -1,16 +1,16 @@
 {{default.subject}}
 
-{{#with default}}
+{{#with default as lesson}}
     {{partial "cell-audience-display"}}
 {{/with}}
 <br />
 
-{{#each siblings}}
+{{#each lesson in siblings}}
     {{partial "cell-teacher-display"}}
 {{/each}}
 
 <br />
 
-{{#each siblings}}
+{{#each lesson in siblings}}
     {{partial "cell-room-display"}}
 {{/each}}

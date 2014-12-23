@@ -2,11 +2,11 @@
 
   <table>
     <tbody>
-      {{#each nested}}
+      {{#each cell in nested}}
         <tr>
           <td>
 
-            {{cell-display lessons=content}}
+            {{cell-display lessons=cell.content}}
 
           </td>
         </tr>
