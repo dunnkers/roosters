@@ -8,7 +8,7 @@ export default Ember.ArrayController.extend({
   }.property('content.@each.index'),
 
   actions: {
-    search: function (param, param2) {
+    search: function (param) {
       this.transitionToRoute('schedule', param);
     }
   }

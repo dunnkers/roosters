@@ -6,7 +6,7 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function () {
-  this.route('schedule', { path: ':id' });
+  this.resource('schedule', { path: ':id' });
 
   this.route('index', { path: '/' }, function () {
     this.resource('grade', { path: '/grades/:grade_id' }, function () {
