@@ -3,7 +3,7 @@
 
   <div class="list-group">
     {{#each student in sortedStudents}}
-        {{#link-to 'schedule' student.id class="list-group-item"}}
+        {{#link-to 'item' student.id class="list-group-item"}}
           {{student.title}}
         {{/link-to}}
     {{/each}}
