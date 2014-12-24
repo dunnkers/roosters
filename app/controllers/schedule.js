@@ -23,9 +23,5 @@ export default Ember.ObjectController.extend({
         sortProperties: [ 'index' ],
         sortAscending: false
     });
-  }.property('lessons'),
-
-  wow: function () {
-    return this.get('lessons');
   }.property('lessons')
 });
