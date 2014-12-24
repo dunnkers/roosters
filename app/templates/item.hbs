@@ -3,5 +3,9 @@
       <h2>{{item.title}}</h2>
 
       {{render "schedule" item.schedule}}
+
+      <small class="text-muted">
+        Bijgewerkt &ndash; {{ago item.schedule.updatedAt}}
+      </small>
   </div>
 </div>
