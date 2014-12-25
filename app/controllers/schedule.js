@@ -3,25 +3,26 @@ import groupBy from '../utils/group-by';
 
 export default Ember.ObjectController.extend({
   rows: function () {
-    return Ember.ArrayController.create({
+    var rows = groupBy(this.get('lessons'), 'index');
 
-        model: groupBy(this.get('lessons'), 'index').map(function (row, index) {
+    rows = rows.map(function (row, index) {
+      return Ember.Object.create({
+        index: index + 1,
 
-          var cells = groupBy(row.get('content'), 'day');
-          cells.push(Ember.Object.create({
-            day: -1,
-            header: true,
-            index: index + 1
-          }));
-
-          return Ember.ArrayController.create({
-            model: cells,
-            sortProperties: [ 'day' ],
-            sortAscending: true
-          });
-        }),
-        sortProperties: [ 'index' ],
-        sortAscending: false
+        cells: Ember.ArrayController.create({
+          model: groupBy(row.get('content'), 'day'),
+          sortProperties: [ 'day' ],
+          sortAscending: true
+        })
+      });
     });
-  }.property('lessons')
+
+    return Ember.ArrayController.create({
+        model: rows,
+        sortProperties: [ 'index' ],
+        sortAscending: true
+    });
+  }.property('lessons'),
+
+  mockup: [1, 2, 3, 4, 5, 6, 7, 8]
 });

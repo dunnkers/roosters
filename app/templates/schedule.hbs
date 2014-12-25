@@ -13,21 +13,24 @@
   <tbody>
 
     {{#each row in rows}}
-        <tr>
-          {{#each cell in row}}
-              {{#if cell.header}}
-                  <th>
-                      u{{cell.index}}
-                  </th>
-              {{else}}
-                  <td>
-                      {{cell-display lessons=cell.content}}
-                  </td>
-              {{/if}}
-          {{/each}}
-        </tr>
+      <tr>
+        <th>
+          u{{row.index}}
+        </th>
+        {{#each cell in row.cells}}
+          <td>
+              {{cell-display lessons=cell.content}}
+          </td>
+        {{/each}}
+      </tr>
     {{else}}
-      -
+        {{#each row in mockup}}
+          <tr>
+            <th>
+              u{{row}}<br /><br />
+            </th>
+          </tr>
+        {{/each}}
     {{/each}}
 
   </tbody>
