@@ -2,6 +2,12 @@ import Ember from 'ember';
 import groupBy from '../utils/group-by';
 
 export default Ember.ObjectController.extend({
+  scheduleChanged: function () {
+    Ember.run.once(this, () => {
+      this.send('outletLoaded');
+    });
+  }.observes('lessons'),
+
   rows: function () {
     var rows = groupBy(this.get('lessons'), 'index');
 

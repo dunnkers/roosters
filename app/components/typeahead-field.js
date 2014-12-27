@@ -6,15 +6,23 @@ export default Ember.TextField.extend({
   classNames: [ 'typeahead' ],
   action: 'search',
 
+  contentChanged: function () {
+    Ember.Logger.debug('Typeahead bloodhound content changed!');
+    this.get('engine').add(this.get('items'));
+  }.observes('content'),
+
+  items: function() {
+    return (this.get('content') || []).map(function (item) {
+      return item.getProperties('item.id', 'item.title');
+    });
+  }.property('content'),
+
   initializeBloodhound: function () {
     var bloodhound = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('item.title'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      // Make this in a way that it observes `content` and
-      // adds to the typeahead automaticaly
-      local: (this.get('content')|| []).map(function (item) {
-          return item.getProperties('item.id', 'item.title');
-      })
+      // if possible, try to bind this somehow
+      local: this.get('items')
     });
 
     bloodhound.initialize().done(function () {
