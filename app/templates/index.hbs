@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-sm-4">
-      <h3>Grades</h3>
+      <h3>Jaarlagen</h3>
 
       <div class="list-group">
-        {{#each grade in gradesSorted}}
+        {{#each grade in arrangedContent}}
             {{#link-to 'grade' grade class="list-group-item"}}
               {{grade.id}}
             {{/link-to}}

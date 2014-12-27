@@ -1,11 +1,5 @@
 <div class="col-sm-4">
   <h3>{{id}}</h3>
 
-  <div class="list-group">
-    {{#each student in sortedStudents}}
-        {{#link-to 'item' student.id class="list-group-item"}}
-          {{student.title}}
-        {{/link-to}}
-    {{/each}}
-  </div>
+  {{render "student-list" students}}
 </div>
