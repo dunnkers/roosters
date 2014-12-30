@@ -6,11 +6,12 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function () {
-  this.resource('item', { path: ':id' });
+  this.resource('item', { path: '/:item_id' });
 
-  this.route('index', { path: '/' }, function () {
+  this.resource('grades', { path: '/' }, function () {
     this.resource('grade', { path: '/grades/:grade_id' }, function () {
-      this.route('group', { path: ':group_id' });
+      this.resource('cluster', { path: '/clusters/:cluster_id' });
+      this.resource('group', { path: '/groups/:group_id' });
     });
   });
 });

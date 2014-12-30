@@ -4,7 +4,7 @@ export default Ember.ArrayController.extend({
   sortProperties: [ 'id' ],
   sortAscending: false,
 
-  modelChanged: function() {
+  modelChanged: function () {
     Ember.run.once(this, () => {
       this.send('outletLoaded');
     });

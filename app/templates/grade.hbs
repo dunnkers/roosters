@@ -5,12 +5,12 @@
     <h4>Klassen</h4>
   {{/if}}
 
-  {{render "group" groups}}
+  {{audiences-list audiences=groups link="group"}}
 
   {{#if clusters}}
     <h4>Clusters</h4>
 
-    {{render "group" clusters}}
+    {{audiences-list audiences=clusters link="cluster"}}
   {{/if}}
 </div>
 
