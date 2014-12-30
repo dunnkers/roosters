@@ -10,7 +10,11 @@ export default Ember.ObjectController.extend({
         Ember.Logger.debug('Finding items!');
 
         this.set('fetched', true);
-        this.set('items', this.store.find('item'));
+        Ember.run.next(this, function () {
+          this.store.find('item').then((items) => {
+            this.set('items', items);
+          });
+        });
       }
     }
   }
