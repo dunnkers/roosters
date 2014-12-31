@@ -6,22 +6,29 @@ export default Ember.TextField.extend({
   classNames: [ 'typeahead' ],
   action: 'search',
 
+  // id and display key
+  id: 'id',
+  title: 'title',
+
   contentChanged: function () {
-    Ember.Logger.debug('Typeahead bloodhound content changed!');
+    Ember.Logger.debug('Feeding BloodHound with data...');
+    var time = new Date();
+
     this.get('engine').add(this.get('items'));
+    
+    Ember.Logger.debug('BloodHound fed -', new Date() - time, 'ms');
   }.observes('content'),
 
-  items: function() {
-    return (this.get('content') || []).map(function (item) {
-      return item.getProperties('item.id', 'item.title');
+  items: function () {
+    return (this.get('content') || []).map((item) => {
+      return item.getProperties(this.get('id'), this.get('title'));
     });
   }.property('content'),
 
   initializeBloodhound: function () {
     var bloodhound = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('item.title'),
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace(this.get('title')),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      // if possible, try to bind this somehow
       local: this.get('items')
     });
 
@@ -32,7 +39,6 @@ export default Ember.TextField.extend({
     });
 
     this.set('engine', bloodhound);
-
   }.on('init'),
 
   // Ember cookbook: Focusing a textfield after it's been inserted
@@ -44,13 +50,13 @@ export default Ember.TextField.extend({
     var element = Ember.$('.typeahead').typeahead({
       highlight: true
     }, {
-      displayKey: 'item.title',
+      displayKey: this.get('title'),
       source: this.get('engine').ttAdapter()
     });
 
     element.on('typeahead:selected', (event, item) => {
       // ensure component value is also set
-      this.set('value', item['item.title']);
+      this.set('value', item[this.get('title')]);
 
       // also bubble an action when suggestion is clicked
       this.sendSuggestion(item);
@@ -63,8 +69,8 @@ export default Ember.TextField.extend({
 
       if (suggestion) {
         // ensure all inputs have the same value
-        this.set('value', suggestion['item.title']);
-        Ember.$('.typeahead').typeahead('val', suggestion['item.title']);
+        this.set('value', suggestion[this.get('title')]);
+        Ember.$('.typeahead').typeahead('val', suggestion[this.get('title')]);
 
         // close dropdown menu. this must be done after setting the value.
         Ember.$('.typeahead').typeahead('close');
@@ -76,7 +82,9 @@ export default Ember.TextField.extend({
   },
 
   sendSuggestion: function (suggestion) {
-    var object = this.get('content').findBy('item.id', suggestion['item.id']);
+    var object = this.get('content').findBy(this.get('id'),
+      suggestion[this.get('id')]);
+
     this.sendAction('search', object);
   }
 });
