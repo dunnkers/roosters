@@ -7,27 +7,27 @@ export default Ember.TextField.extend({
   action: 'search',
 
   // id and display key
-  id: 'id',
-  title: 'title',
+  unique: 'id',
+  displayKey: 'title',
 
   contentChanged: function () {
     Ember.Logger.debug('Feeding BloodHound with data...');
     var time = new Date();
 
     this.get('engine').add(this.get('items'));
-    
+
     Ember.Logger.debug('BloodHound fed -', new Date() - time, 'ms');
   }.observes('content'),
 
   items: function () {
     return (this.get('content') || []).map((item) => {
-      return item.getProperties(this.get('id'), this.get('title'));
+      return item.getProperties(this.get('unique'), this.get('displayKey'));
     });
   }.property('content'),
 
   initializeBloodhound: function () {
     var bloodhound = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace(this.get('title')),
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace(this.get('displayKey')),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       local: this.get('items')
     });
@@ -50,13 +50,13 @@ export default Ember.TextField.extend({
     var element = Ember.$('.typeahead').typeahead({
       highlight: true
     }, {
-      displayKey: this.get('title'),
+      displayKey: this.get('displayKey'),
       source: this.get('engine').ttAdapter()
     });
 
     element.on('typeahead:selected', (event, item) => {
       // ensure component value is also set
-      this.set('value', item[this.get('title')]);
+      this.set('value', item[this.get('displayKey')]);
 
       // also bubble an action when suggestion is clicked
       this.sendSuggestion(item);
@@ -69,8 +69,8 @@ export default Ember.TextField.extend({
 
       if (suggestion) {
         // ensure all inputs have the same value
-        this.set('value', suggestion[this.get('title')]);
-        Ember.$('.typeahead').typeahead('val', suggestion[this.get('title')]);
+        this.set('value', suggestion[this.get('displayKey')]);
+        Ember.$('.typeahead').typeahead('val', suggestion[this.get('displayKey')]);
 
         // close dropdown menu. this must be done after setting the value.
         Ember.$('.typeahead').typeahead('close');
@@ -82,8 +82,8 @@ export default Ember.TextField.extend({
   },
 
   sendSuggestion: function (suggestion) {
-    var object = this.get('content').findBy(this.get('id'),
-      suggestion[this.get('id')]);
+    var object = this.get('content').findBy(this.get('unique'),
+      suggestion[this.get('unique')]);
 
     this.sendAction('search', object);
   }
