@@ -51,7 +51,28 @@ export default Ember.TextField.extend({
       highlight: true
     }, {
       displayKey: this.get('displayKey'),
-      source: this.get('engine').ttAdapter()
+      source: this.get('engine').ttAdapter(),
+      templates: {
+        suggestion: function (suggestion) {
+          var template = '{{#link-to "item" %@ href="/%@"}}%@{{/link-to}}'.fmt(
+            suggestion[this.get('unique')],
+            suggestion[this.get('unique')],
+            suggestion[this.get('displayKey')]
+          );
+
+          var view = Ember.View.create({
+            template: Ember.Handlebars.compile(template)
+          });
+
+          var $elem;
+          Ember.run(function() {
+            $elem = Ember.$('<div>');
+            view.appendTo($elem);
+          });
+
+          return $elem.html();
+        }
+      }
     });
 
     element.on('typeahead:selected', (event, item) => {
@@ -63,6 +84,11 @@ export default Ember.TextField.extend({
     });
   }.on('didInsertElement'),
 
+  valChanged: function () {
+    Ember.Logger.debug('check it.', Ember.$('.tt-dataset-0').html());
+  }.observes('value'),
+
+  // bubble up an action
   insertNewline: function () {
     this.get('engine').get(this.get('value'), (suggestions) => {
       var suggestion = suggestions.get('firstObject');
