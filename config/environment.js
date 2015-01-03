@@ -29,7 +29,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-    ENV.apiUrl = 'http://127.0.0.1:8080';
+    ENV.apiUrl = 'http://127.0.0.1:5000';
   }
 
   if (environment === 'test') {
