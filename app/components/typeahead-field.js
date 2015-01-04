@@ -18,17 +18,43 @@ export default Ember.TextField.extend({
       highlight: true
     }, {
       displayKey: this.get('displayKey'),
-      source: () => {}
+      source: (query, callback) => {
+        this.sendAction('fetch', query, callback);
+      }
     });
 
     element.on('typeahead:selected', (event, item) => {
       // ensure component value is also set
       this.set('value', item[this.get('displayKey')]);
+
+      // bubble an action when a suggestion is clicked
+      this.sendAction('search', item[this.get('unique')]);
     });
   }.on('didInsertElement'),
 
+  // bubble up an action
   insertNewline: function () {
-    // close dropdown menu. this must be done after setting the value.
-    Ember.$('.typeahead').typeahead('close');
+    var value = Ember.$('.typeahead').typeahead('val');
+    // ensure value is updated
+    this.set('value', value);
+
+    if (value) {
+      this.sendAction('fetch', value, (suggestions) => {
+        var suggestion = suggestions[0];
+
+        if (suggestion) {
+          // send action with id as param
+          this.sendAction('search', suggestion[this.get('unique')]);
+
+          var disp = suggestion[this.get('displayKey')];
+
+          // set display-key as value
+          Ember.$('.typeahead').typeahead('val', disp);
+
+          // close dropdown menu. must be done after setting the value.
+          Ember.$('.typeahead').typeahead('close');
+        }
+      });
+    }
   }
 });

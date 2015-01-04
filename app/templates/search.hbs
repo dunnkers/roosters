@@ -2,8 +2,9 @@
   <div class="col-xs-12 col-sm-7 col-md-5 col-lg-4 col-sm-offset-3">
     <form>
       <div id="bloodhound">
-        {{typeahead-field content=content type="search" placeholder="Zoek..."
-          required="true" search="search" unique="item.id" displayKey="item.title"}}
+        {{typeahead-field type="search" placeholder="Zoek..." required="true"
+          content=content search="search" fetch="fetch"
+          unique="item.id" displayKey="item.title"}}
       </div>
     </form>
   </div>
