@@ -2,14 +2,10 @@
   tussen
 {{else}}
     {{#unless lesson.empty}}
-        {{lesson.subject}}
+        {{lesson.subject}}<br />
 
-        <br />
+        {{lesson.teacher.id}}<br />
 
-        {{partial "cell-teacher-display"}}
-
-        <br />
-
-        {{partial "cell-room-display"}}
+        {{lesson.room.id}}
     {{/unless}}
 {{/if}}
