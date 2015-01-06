@@ -1,13 +1,13 @@
-{{default.subject}}
+{{content.firstObject.subject}}
 
 <br />
 
-{{#each lesson in siblings}}
+{{#each lesson in content}}
     {{partial "cell-teacher-display"}}
 {{/each}}
 
 <br />
 
-{{#each lesson in siblings}}
+{{#each lesson in content}}
     {{partial "cell-room-display"}}
 {{/each}}

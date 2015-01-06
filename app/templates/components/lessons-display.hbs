@@ -4,16 +4,14 @@
     <tbody>
       {{#each cell in nested}}
         <tr>
-          <td>
 
-            {{cell-display lessons=cell.content}}
+          {{render "cell" cell.content}}
 
-          </td>
         </tr>
       {{/each}}
     </tbody>
   </table>
 
 {{else}}
-    {{sibling-lesson siblings=siblings.content}}
+    {{render "siblings" nested.firstObject.content}}
 {{/if}}

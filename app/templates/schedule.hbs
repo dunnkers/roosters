@@ -18,9 +18,7 @@
           u{{row.index}}
         </th>
         {{#each cell in row.cells}}
-          <td>
-              {{cell-display lessons=cell.content}}
-          </td>
+          {{render "cell" cell.content}}
         {{/each}}
       </tr>
     {{else}}
