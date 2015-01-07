@@ -30,6 +30,11 @@
     text-overflow: ellipsis;
   }
 
+  tbody td.cell:hover {
+    background-color: #D6F5FF;
+    cursor: pointer;
+  }
+
   @media screen and (max-width: $screen-sm-min) {
     /* http://www.bootply.com/9njmoY2CmS */
     table-layout: fixed;

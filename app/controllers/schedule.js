@@ -2,6 +2,12 @@ import Ember from 'ember';
 import groupBy from '../utils/group-by';
 
 export default Ember.ObjectController.extend({
+  actions: {
+    lessonClicked: function (lesson) {
+      this.transitionToRoute('lesson', lesson);
+    }
+  },
+
   rows: function () {
     var rows = groupBy(this.get('lessons'), 'index');
 
