@@ -2,14 +2,8 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
   actions: {
-    didRender: function () {
-      var modal = Ember.$('.lesson-modal');
-
-      modal.on('hidden.bs.modal', () => {
-        this.transitionToRoute('item');
-      });
-
-      modal.modal('show');
+    modalHidden: function () {
+      this.transitionToRoute('item');
     }
   },
 
