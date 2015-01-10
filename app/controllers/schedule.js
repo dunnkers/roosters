@@ -28,7 +28,5 @@ export default Ember.ObjectController.extend({
         sortProperties: [ 'index' ],
         sortAscending: true
     });
-  }.property('lessons'),
-
-  mockup: [1, 2, 3, 4, 5, 6, 7, 8]
+  }.property('lessons')
 });

@@ -1,12 +1,12 @@
 <table class="schedule">
   <thead>
     <tr>
-      <th>Uur\Dag</th>
-      <th>maandag</th>
-      <th>dinsdag</th>
-      <th>woensdag</th>
-      <th>donderdag</th>
-      <th>vrijdag</th>
+      <th>Dag\Uur</th>
+      <th scope="col">maandag</th>
+      <th scope="col">dinsdag</th>
+      <th scope="col">woensdag</th>
+      <th scope="col">donderdag</th>
+      <th scope="col">vrijdag</th>
     </tr>
   </thead>
 
@@ -14,21 +14,13 @@
 
     {{#each row in rows}}
       <tr>
-        <th>
+        <th scope="row">
           u{{row.index}}
         </th>
         {{#each cell in row.cells}}
           {{render "cell" cell.content}}
         {{/each}}
       </tr>
-    {{else}}
-        {{#each row in mockup}}
-          <tr>
-            <th>
-              u{{row}}<br /><br />
-            </th>
-          </tr>
-        {{/each}}
     {{/each}}
 
   </tbody>

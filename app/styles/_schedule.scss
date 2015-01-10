@@ -4,23 +4,34 @@
   tr {
     td, th {
       font-size: 12px;
-      font-family: arial;
       border: 1px solid black;
       vertical-align: top;
       padding: 2px;
 
+      // word-breaks big coluns, to make sure
+      // columns widths better evened out.
+      @media (max-width: $screen-sm-min) {
+        max-width: 50px;
+      }
+
+      // give big devices slightly more space
       @media (min-width: $screen-sm-min) {
         padding: 3px;
       }
     }
 
-    td a:not(:hover) {
-      color: inherit;
-    }
-
     th {
-      font-weight: normal;
-      background-color: rgb(220, 220, 220);
+      font-weight: 300;
+      background-color: gainsboro;
+
+      // optimize space
+      font-size: 11px;
+
+      // optimize space; mobile only
+      @media (max-width: $screen-sm-min) {
+        padding-right: 0;
+        max-width: 12px;
+      }
     }
   }
 
@@ -28,6 +39,11 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    // allow no width, causing the header to ellipsize in mobile
+    @media (max-width: $screen-sm-min) {
+      max-width: 0px;
+    }
   }
 
   tbody td.cell:hover {
@@ -37,12 +53,7 @@
 
   @media screen and (max-width: $screen-sm-min) {
     /* http://www.bootply.com/9njmoY2CmS */
-    table-layout: fixed;
     width: 100%;
     overflow-wrap: break-word;
-
-    tbody tr th, thead tr th:first-child {
-      width: 20px;
-    }
   }
 }
