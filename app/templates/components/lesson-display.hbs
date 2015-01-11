@@ -1,11 +1,15 @@
-{{#if lesson.between}}
-  tussen
-{{else}}
-    {{#unless lesson.empty}}
+{{#if isDetailed}}
+  {{#link-to "lesson" lesson}}
+    <div>
+      {{#if lesson.between}}
+        tussen
+      {{else}}
         {{lesson.subject}}<br />
 
         {{lesson.teacher.id}}<br />
 
         {{lesson.room.id}}
-    {{/unless}}
+      {{/if}}
+    </div>
+  {{/link-to}}
 {{/if}}

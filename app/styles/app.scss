@@ -23,6 +23,20 @@ html, body {
   padding: 150px 0;
 }
 
+.modal {
+  .modal-body {
+    padding: 0;
+  }
+
+  .list-group {
+    margin: 0;
+  }
+
+  .modal-dialog {
+    margin: 20px;
+  }
+}
+
 @media print {
   a[href]:after {
     content: none !important;
