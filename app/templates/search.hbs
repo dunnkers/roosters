@@ -5,6 +5,7 @@
         {{typeahead-field type="search" placeholder="Zoek..." required="true"
           content=content search="search" fetch="fetch"
           unique="item.id" displayKey="item.title"}}
+        <div class="close-icon hidden-md hidden-lg" {{action "clear"}}>×</div>
       </div>
     </form>
   </div>

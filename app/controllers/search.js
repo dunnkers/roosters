@@ -37,6 +37,11 @@ export default Ember.ArrayController.extend({
 
       // Wait 100 ms, allowing another find request to interrupt this one.
       Ember.run.debounce(this, this.find, query, callback, 100);
+    },
+
+    clear: function () {
+      Ember.$('.typeahead').typeahead('val', '');
+      Ember.$('.typeahead').focus();
     }
   }
 });
