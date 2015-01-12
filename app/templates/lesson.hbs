@@ -7,35 +7,24 @@
       {{#if between}}
         Tussenuur
       {{else}}
-        {{teacher.name}}, {{subject}}
-        &ndash;
-        <span class="text-muted">{{group.id}}{{cluster.id}}</span>
+        {{subject}}{{#if room}} <small>in</small> <span class="text-muted">{{room.id}}</span>{{/if}}
       {{/if}}
     </h4>
+    <h5 class="modal-title">
+      {{! Use non-breaking space to ensure layout doens't move when teacher isn't loaded }}
+      {{teacher.name}}&nbsp;<span class="text-muted pull-right">{{group.id}}{{cluster.id}}</span>
+    </h5>
   </div>
 
   <div class="modal-body">
-    <ul>
-      <li>
-        < lesson >
-        <ul>
-          <li>
-            < items >
-            <ul>
-              <li>
-                < students >
-                <ul>
-                  <li>< student ></li>
-                  <li>< student ></li>
-                  <li>< student ></li>
-                  <li>< student ></li>
-                  <li>< student ></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
+    {{#if cluster}}
+      {{render "student-list" cluster.students}}
+    {{else}}
+      {{#if group}}
+        {{render "student-list" group.students}}
+      {{else}}
+          <h5 class="text-muted text-center">Hier is niets te zien.</h5>
+      {{/if}}
+    {{/if}}
   </div>
 {{/modal-overlay}}

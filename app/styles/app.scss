@@ -3,6 +3,7 @@
 @import "typeahead";
 @import "schedule";
 @import "search-input";
+@import "modal";
 
 html, body {
   margin: 20px;
@@ -21,20 +22,6 @@ html, body {
   display: table;
   margin: 0 auto;
   padding: 150px 0;
-}
-
-.modal {
-  .modal-body {
-    padding: 0;
-  }
-
-  .list-group {
-    margin: 0;
-  }
-
-  .modal-dialog {
-    margin: 20px;
-  }
 }
 
 @media print {

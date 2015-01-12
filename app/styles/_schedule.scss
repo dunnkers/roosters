@@ -28,7 +28,6 @@
 
     // optimize space; mobile only
     @media (max-width: $screen-sm-min) {
-      padding-right: 0;
       max-width: 12px;
     }
 
@@ -84,6 +83,12 @@
 
     td > table {
       margin: 2px;
+    }
+
+    th {
+      @media (max-width: $screen-sm-min) {
+        padding-right: 0;
+      }
     }
 
     @media (min-width: $screen-sm-min) {

@@ -1,0 +1,23 @@
+.modal .modal-dialog {
+  width: 200px;
+  margin: 30px auto;
+
+  .modal-header .close {
+    // reset modal-header padding
+    margin-top: -15px;
+    margin-right: -15px;
+
+    // enlarge close icon touch surface with padding
+    padding: 7px 15px 0 5px;
+
+    font-size: 31px;
+  }
+
+  .modal-body {
+    padding: 0;
+  }
+
+  .list-group {
+    margin: 0;
+  }
+}
