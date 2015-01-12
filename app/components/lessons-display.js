@@ -23,7 +23,7 @@ export default Ember.Component.extend({
   },
 
   nested: function () {
-    return groupBy(this.get('lessons'), 'subject', 'cluster.id' );
+    return groupBy(this.get('lessons'), 'subject', 'data.cluster.id' );
   }.property('lessons'),
 
   isNested: function () {

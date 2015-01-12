@@ -8,10 +8,10 @@ export default DS.Model.extend({
   between: DS.attr('boolean'),
   reserved: DS.attr('boolean'),
 
-  room: DS.belongsTo('room'),
-  teacher: DS.belongsTo('teacher'),
-  group: DS.belongsTo('group'),
-  cluster: DS.belongsTo('cluster'),
+  room: DS.belongsTo('room', { async: true }),
+  teacher: DS.belongsTo('teacher', { async: true }),
+  group: DS.belongsTo('group', { async: true }),
+  cluster: DS.belongsTo('cluster', { async: true }),
 
   subject: DS.attr('string'),
 
