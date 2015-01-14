@@ -1,6 +1,6 @@
 <div class="list-group">
   {{#each audience in arrangedAudiences}}
-    {{#link-to link audience class="list-group-item"}}
+    {{#link-to link audience.id class="list-group-item"}}
       {{audience.id}}
     {{/link-to}}
   {{/each}}
