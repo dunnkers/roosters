@@ -45,7 +45,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.apiUrl = 'https://api-roosters.rhcloud.com';
+    ENV.apiUrl = 'http://roosters.cloudcontrolled.com';
   }
 
   ENV.contentSecurityPolicy['connect-src'] = "'self' " + ENV.apiUrl;
