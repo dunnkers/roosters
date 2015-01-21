@@ -15,5 +15,5 @@ export default DS.Model.extend({
 
   subject: DS.attr('string'),
 
-  schedules: DS.hasMany('schedule', { async: true })
+  audience: DS.belongsTo('audience', { async: true })
 });

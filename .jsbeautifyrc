@@ -1,0 +1,9 @@
+{
+  "js": {
+    "space-after-anon-function": true,
+    "keep_function_indentation": true,
+    "keep-array-indentation": true,
+    "space-in-paren": true,
+    "end_with_newline": true
+  }
+}

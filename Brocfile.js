@@ -14,6 +14,7 @@ var app = new EmberApp({
 var javascripts = app.bowerDirectory + '/bootstrap-sass-official/assets/javascripts/bootstrap/';
 app.import(javascripts + 'transition.js');
 app.import(javascripts + 'modal.js');
+app.import(javascripts + 'collapse.js');
 
 // twitter typeahead.js
 app.import({
