@@ -1,0 +1,27 @@
+<table class="schedule">
+  <thead>
+    <tr>
+      <th>Dag\Uur</th>
+      <th scope="col">maandag</th>
+      <th scope="col">dinsdag</th>
+      <th scope="col">woensdag</th>
+      <th scope="col">donderdag</th>
+      <th scope="col">vrijdag</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    {{#each row in rows}}
+      <tr>
+        <th scope="row">
+          u{{row.index}}
+        </th>
+        {{#each cell in row.cells}}
+          {{render "cell" cell.content}}
+        {{/each}}
+      </tr>
+    {{/each}}
+
+  </tbody>
+</table>

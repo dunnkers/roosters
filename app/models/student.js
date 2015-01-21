@@ -1,12 +1,14 @@
-export default DS.Model.extend({
-	voornaam: DS.attr('string'),
-	achternaam: DS.attr('string'),
-	klas: DS.attr('string'),
-	jaarlaag: DS.attr('string'),
-	naam: function () {
-		return this.get('voornaam') + ' ' + this.get('achternaam');
-	}.property('voornaam', 'achternaam'),
-	titel: function () {
-		return this.get('naam') + ' (' + this.get('klas') + ')';
-	}.property('naam', 'klas')
+import DS from 'ember-data';
+import Item from './item';
+
+export default Item.extend({
+  firstName: DS.attr('string'),
+  lastName: DS.attr('string'),
+  grade: DS.belongsTo('grade'),
+  group: DS.belongsTo('group'),
+  clusters: DS.hasMany('cluster'),
+
+  title: function () {
+    return '%@ %@'.fmt(this.get('firstName'), this.get('lastName'));
+  }.property('firstName', 'lastName')
 });

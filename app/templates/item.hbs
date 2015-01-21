@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-9 col-sm-push-3">
+      <h2>{{item.title}}</h2>
+
+      {{#if item.schedule}}
+        {{render "schedule" item.schedule}}
+
+        <small class="text-muted">
+          Bijgewerkt &ndash; {{ago item.schedule.updatedAt}}
+        </small>
+      {{/if}}
+  </div>
+</div>
+
+{{#unless item.schedule}}
+  {{#error-state}}
+    <img src="confused-smiley.svg" alt="Confused smiley">
+    <h2>Oops, geen rooster gevonden...</h2>
+  {{/error-state}}
+{{/unless}}
+
+{{outlet}}

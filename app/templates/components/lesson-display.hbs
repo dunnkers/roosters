@@ -1,0 +1,15 @@
+{{#if isDetailed}}
+  {{#link-to "lesson" lesson}}
+    <div>
+      {{#if lesson.between}}
+        tussen
+      {{else}}
+        {{lesson.subject}}<br />
+
+        {{lesson.data.teacher}}<br />
+
+        {{lesson.data.room}}
+      {{/if}}
+    </div>
+  {{/link-to}}
+{{/if}}

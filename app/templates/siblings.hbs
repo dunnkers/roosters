@@ -1,0 +1,17 @@
+{{#link-to "lesson" content.firstObject}}
+  <div>
+    {{content.firstObject.subject}}
+
+    <br />
+
+    {{#each lesson in content}}
+        {{lesson.data.teacher}}
+    {{/each}}
+
+    <br />
+
+    {{#each lesson in content}}
+        {{lesson.data.room}}
+    {{/each}}
+  </div>
+{{/link-to}}

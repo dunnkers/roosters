@@ -1,0 +1,29 @@
+{{#each type in types}}
+  <div class="panel-group">
+
+    {{#each group in type.content}}
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a {{bind-attr href=group.href}} data-toggle="collapse">
+                {{group.data.group}}
+                <span class="badge pull-right">
+                  {{group.content.length}}
+                </span>
+              </a>
+          </h3>
+        </div>
+        {{! No panel-body since all it does is add padding we don't want }}
+        <div {{bind-attr id=group.data.group}} class="collapse">
+          <div class="list-group">
+            {{#each item in group.content}}
+              {{#link-to 'item' item.id class="list-group-item" }}
+                {{item.title}}
+              {{/link-to}}
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+{{/each}}

@@ -1,25 +1,32 @@
-export default Ember.ObjectController.extend({
-	type: 'student',
-	handleBetween: false,
-	resolveType: function (id) {
-		var ret = null;
-		if (Number(id)) {
-			if (Number(id) > 1000) {
-				ret = 'student';
-				this.set('handleBetween', true);
-			}else {
-				// classroom
-			}
-		}else {
-			if (/\d/g.test(id)) {
-				// class
-			}else {
-				ret = 'teacher';
-				this.set('handleBetween', false);
-			}
-		}
+import Ember from 'ember';
+import groupBy from '../utils/group-by';
 
-		this.set('type', ret);
-		return ret;
-	}
+export default Ember.ObjectController.extend({
+  actions: {
+    lessonClicked: function (lesson) {
+      this.transitionToRoute('lesson', lesson);
+    }
+  },
+
+  rows: function () {
+    var rows = groupBy(this.get('lessons'), 'index');
+
+    rows = rows.map(function (row, index) {
+      return Ember.Object.create({
+        index: index + 1,
+
+        cells: Ember.ArrayController.create({
+          model: groupBy(row.get('content'), 'day'),
+          sortProperties: [ 'day' ],
+          sortAscending: true
+        })
+      });
+    });
+
+    return Ember.ArrayController.create({
+        model: rows,
+        sortProperties: [ 'index' ],
+        sortAscending: true
+    });
+  }.property('lessons')
 });
