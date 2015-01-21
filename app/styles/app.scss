@@ -40,3 +40,16 @@ html, body {
     content: none !important;
   }
 }
+
+.grades {
+  // optimize responsiveness for mobile
+  .list-group-item {
+    @media (max-width: 420px) {
+      padding: 10px 5px;
+    }
+
+    @media (min-width: 420px) {
+      padding: 10px 10px
+    }
+  }
+}

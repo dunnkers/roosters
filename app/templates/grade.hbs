@@ -1,15 +1,9 @@
-<div class="col-sm-4">
+<div class="col-xs-4 col-sm-3 col-md-2">
   <h3>{{id}}</h3>
-
-  {{#if data.clusters}}
-    <h4>Klassen</h4>
-  {{/if}}
 
   {{audiences-list audiences=data.groups link="group"}}
 
   {{#if data.clusters}}
-    <h4>Clusters</h4>
-
     {{audiences-list audiences=data.clusters link="cluster"}}
   {{/if}}
 </div>
