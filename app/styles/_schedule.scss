@@ -21,14 +21,15 @@
   th {
     font-weight: 300;
     background-color: gainsboro;
-    padding: 2px;
+    color: $gray;
 
     // optimize space
     font-size: 11px;
+    padding: 2px;
 
     // optimize space; mobile only
     @media (max-width: $screen-sm-min) {
-      max-width: 12px;
+      max-width: 13px;
     }
 
     // give big devices slightly more space
@@ -85,10 +86,13 @@
       margin: 2px;
     }
 
+    // only left headers
     th {
       @media (max-width: $screen-sm-min) {
         padding-right: 0;
       }
+
+      text-align: left;
     }
 
     @media (min-width: $screen-sm-min) {
