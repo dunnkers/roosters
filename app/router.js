@@ -10,7 +10,7 @@ Router.map(function () {
     this.resource('lesson', { path: '/:lesson_id' });
   });
 
-  this.resource('grades', { path: '/' }, function () {
+  this.resource('grades', { path: '/grades' }, function () {
     this.resource('grade', { path: '/grades/:grade_id' }, function () {
       this.resource('cluster', { path: '/clusters/:cluster_id' });
       this.resource('group', { path: '/groups/:group_id' });

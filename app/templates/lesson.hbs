@@ -29,7 +29,7 @@
         {{render "student-list" group.students}}
       {{else}}
         {{#if audience}}
-          {{render "item-list" audience.items}}
+          {{render "student-list" audience.items}}
         {{else}}
           {{#error-state}}
             <h4>Geen publiek voor deze les gevonden.</h4>
