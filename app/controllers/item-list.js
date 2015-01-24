@@ -6,8 +6,6 @@ export default Ember.ArrayController.extend({
 
     var types = groupBy(this.get('content'), 'type');
 
-    //types.set('sortProperties', [ 'dat' ]);
-
     types = types.map(function (type) {
       var groups = groupBy(type.get('content'), 'data.group');
 

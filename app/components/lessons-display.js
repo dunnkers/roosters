@@ -10,14 +10,13 @@ export default Ember.Component.extend({
   click: function () {
     // only siblings (single) lessons
     if (!this.get('isNested')) {
-      // this.sendAction('clicked', this.get('nested.firstObject.content'));
-      Ember.Logger.error('Sibling lessons not supported yet!');
+      // just send the first sibling lesson.
+      this.sendAction('clicked', this.get('nested.firstObject.content.firstObject'));
     }
   },
 
   actions: {
     lessonClicked: function (lesson) {
-      Ember.Logger.debug('lesson(s) clicked!');
       this.sendAction('clicked', lesson);
     }
   },
