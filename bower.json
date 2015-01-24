@@ -12,7 +12,7 @@
     "ember-load-initializers": "ember-cli/ember-load-initializers#0.0.2",
     "ember-qunit": "0.1.8",
     "ember-qunit-notifications": "0.0.6",
-    "qunit": "~1.16.0",
+    "qunit": "~1.17.1",
     "typeahead.js": "~0.10.5",
     "moment": "~2.8.4",
     "ember-cli-moment-shim": "~0.0.2",
