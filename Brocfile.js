@@ -25,5 +25,8 @@ app.import({
 // moment locale
 app.import(app.bowerDirectory + '/moment/locale/nl.js');
 
+// google analytics
+app.import(app.bowerDirectory + '/ember-google-analytics/ember-google-analytics.js');
+
 
 module.exports = app.toTree();

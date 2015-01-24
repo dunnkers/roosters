@@ -16,6 +16,7 @@
     "typeahead.js": "~0.10.5",
     "moment": "~2.8.4",
     "ember-cli-moment-shim": "~0.0.2",
-    "bootstrap-sass-official": "~3.3.1"
+    "bootstrap-sass-official": "~3.3.1",
+    "ember-google-analytics": "~0.1.0"
   }
 }
