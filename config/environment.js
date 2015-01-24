@@ -16,19 +16,10 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    },
-    contentSecurityPolicy: {
-      // Content-Security-Policy
     }
   };
 
   if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
-
     ENV.apiUrl = 'http://127.0.0.1:5000';
   }
 
@@ -47,8 +38,6 @@ module.exports = function(environment) {
   if (environment === 'production') {
     ENV.apiUrl = 'http://roosters.cloudcontrolled.com';
   }
-
-  ENV.contentSecurityPolicy['connect-src'] = "'self' " + ENV.apiUrl;
 
   return ENV;
 };
