@@ -20,4 +20,41 @@
   .list-group {
     margin: 0;
   }
+
+  // remove gutter width
+  .row {
+    margin: 0;
+    margin-bottom: 15px;
+
+    [class*='col-'] {
+      padding: 0;
+
+      // width transitions
+      @include transition-property(width);
+      @include transition-duration(.35s);
+      @include transition-timing-function(ease);
+
+      .panel-default {
+        margin: 0;
+      }
+    }
+  }
+
+  // fix panel-heading badge border-color
+  .panel-default > .panel-heading .badge {
+    background-color: $gray-light;
+  }
+
+  // increase link surface area
+  .panel-default > .panel-heading {
+    padding: 0;
+
+    > a {
+      color: inherit;
+
+      > .panel-title {
+        padding: 10px 15px;
+      }
+    }
+  }
 }

@@ -1,0 +1,9 @@
+<div class="panel-group" id="collapsible-groups" aria-multiselectable="true">
+  {{#each grade in grades}}
+    <div class="row">
+      {{#each group in grade.content}}
+        {{collapsible-group-panel group=group}}
+      {{/each}}
+    </div>
+  {{/each}}
+</div>

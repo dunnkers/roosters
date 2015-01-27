@@ -25,13 +25,13 @@
 
   <div class="modal-body">
     {{#if cluster}}
-      {{render "student-list" cluster.students}}
+      {{render "item-list" cluster.students}}
     {{else}}
       {{#if group}}
-        {{render "student-list" group.students}}
+        {{render "item-list" group.students}}
       {{else}}
         {{#if audience}}
-          {{render "student-list" audience.items}}
+          {{render "item-groups" audience.items}}
         {{else}}
           {{#error-state}}
             <h4>Geen publiek voor deze les gevonden.</h4>
