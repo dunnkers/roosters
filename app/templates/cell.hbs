@@ -1,5 +1,41 @@
 {{#if single}}
-  {{lesson-display lesson=content.firstObject clicked="lessonClicked"}}
+
+  {{! Ordinary- or sibling lesson }}
+  {{#if lesson.detailed}}
+
+    {{! Table cell }}
+    {{#link-to "lesson" lesson tagName="td" class="cell" }}
+      {{! Use both href and action for accessibility }}
+      {{#link-to "lesson" lesson}}
+
+        {{#if lesson.between}}
+          <div>
+            tussen
+          </div>
+        {{else}}
+          <div>
+            {{render "lesson-info" combined}}
+          </div>
+        {{/if}}
+
+      {{/link-to}}
+    {{/link-to}}
+
+  {{else}}
+    <td></td>
+  {{/if}}
 {{else}}
-  {{lessons-display lessons=content clicked="lessonClicked"}}
+
+  {{! Nested }}
+  <td>
+    <table>
+      <tbody>
+        {{#each cell in nested}}
+          <tr>
+            {{render "cell" cell.content}}
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </td>
 {{/if}}

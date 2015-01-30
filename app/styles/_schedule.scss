@@ -9,7 +9,10 @@
     font-size: 12px;
     border: 1px solid $gray-light;
     vertical-align: top;
+  }
 
+  // only cells that are direct ascendants; exclude nested cells
+  > tbody > tr > td, > tbody > tr > th {
     // word-breaks big columns, to make sure
     // columns widths better evened out.
     @media (max-width: $screen-sm-min) {

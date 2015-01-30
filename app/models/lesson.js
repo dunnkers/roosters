@@ -6,7 +6,6 @@ export default DS.Model.extend({
 
   empty: DS.attr('boolean'),
   between: DS.attr('boolean'),
-  reserved: DS.attr('boolean'),
 
   room: DS.belongsTo('room', { async: true }),
   teacher: DS.belongsTo('teacher', { async: true }),
@@ -15,5 +14,9 @@ export default DS.Model.extend({
 
   subject: DS.attr('string'),
 
-  audience: DS.belongsTo('audience', { async: true })
+  audience: DS.belongsTo('audience', { async: true }),
+
+  detailed: function () {
+    return !this.get('empty') || this.get('between');
+  }.property('empty', 'between')
 });

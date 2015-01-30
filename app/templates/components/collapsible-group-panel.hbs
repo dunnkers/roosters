@@ -10,9 +10,11 @@
             {{group.content.length}}
           </span>
         </h3>
-      </a>{{! clearfix to clear columns above}}
+      </a>
     </div>
+
     {{! No panel-body since all it does is add padding we don't want }}
+
     <div {{bind-attr id=group.data.group}} class="collapse">
       {{render "item-list" group.content}}
     </div>
