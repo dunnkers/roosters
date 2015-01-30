@@ -12,10 +12,10 @@
 
   <tbody>
 
-    {{#each row in rows}}
+    {{#each row in rows itemController="row"}}
       <tr>
         <th scope="row">
-          u{{row.index}}
+          u{{row.rowIndex}}
         </th>
         {{#each cell in row.cells}}
           {{render "cell" cell.content}}
@@ -25,3 +25,9 @@
 
   </tbody>
 </table>
+
+{{#if updatedAt}}
+  <small class="text-muted">
+    Bijgewerkt &ndash; {{ago updatedAt}}
+  </small>
+{{/if}}

@@ -4,12 +4,6 @@
 
       {{#if item.schedule}}
         {{render "schedule" item.schedule}}
-
-        {{#if item.schedule.updatedAt}}
-          <small class="text-muted">
-            Bijgewerkt &ndash; {{ago item.schedule.updatedAt}}
-          </small>
-        {{/if}}
       {{/if}}
   </div>
 </div>
