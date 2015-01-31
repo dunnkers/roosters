@@ -1,20 +1,20 @@
-{{#if single}}
+{{#if cell.single}}
 
   {{! Ordinary- or sibling lesson }}
-  {{#if lesson.detailed}}
+  {{#if cell.lesson.detailed}}
 
     {{! Table cell }}
-    {{#link-to "lesson" lesson tagName="td" class="cell" }}
+    {{#link-to "lesson" cell.lesson tagName="td" class="cell" }}
       {{! Use both href and action for accessibility }}
-      {{#link-to "lesson" lesson}}
+      {{#link-to "lesson" cell.lesson}}
 
-        {{#if lesson.between}}
+        {{#if cell.lesson.between}}
           <div>
             tussen
           </div>
         {{else}}
           <div>
-            {{render "lesson-info" combined}}
+            {{render "lesson-info" cell.combined}}
           </div>
         {{/if}}
 
@@ -30,7 +30,7 @@
   <td>
     <table>
       <tbody>
-        {{#each cell in nested}}
+        {{#each cell in cell.nested}}
           <tr>
             {{render "cell" cell.content}}
           </tr>

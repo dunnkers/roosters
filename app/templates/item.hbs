@@ -3,7 +3,7 @@
       <h2>{{item.title}}</h2>
 
       {{#if item.schedule}}
-        {{render "schedule" item.schedule}}
+        {{item-schedule schedule=item.schedule type=item.type}}
       {{/if}}
   </div>
 </div>

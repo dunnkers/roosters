@@ -17,8 +17,8 @@
         <th scope="row">
           u{{row.rowIndex}}
         </th>
-        {{#each cell in row.cells}}
-          {{render "cell" cell.content}}
+        {{#each cell in row.cells itemController="cell"}}
+          {{partial "cell"}}
         {{/each}}
       </tr>
     {{/each}}
@@ -26,8 +26,8 @@
   </tbody>
 </table>
 
-{{#if updatedAt}}
+{{#if schedule.updatedAt}}
   <small class="text-muted">
-    Bijgewerkt &ndash; {{ago updatedAt}}
+    Bijgewerkt &ndash; {{ago schedule.updatedAt}}
   </small>
 {{/if}}

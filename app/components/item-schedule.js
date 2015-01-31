@@ -1,12 +1,12 @@
 import Ember from 'ember';
 import groupBy from '../utils/group-by';
 
-export default Ember.ObjectController.extend({
+export default Ember.Component.extend({
   rows: function () {
     return Ember.ArrayController.create({
-        model: groupBy(this.get('lessons'), 'index'),
+        model: groupBy(this.get('schedule.lessons'), 'index'),
         sortProperties: [ 'index' ],
         sortAscending: true
     });
-  }.property('lessons')
+  }.property('schedule.lessons')
 });

@@ -1,24 +1,29 @@
 import Ember from 'ember';
 import groupBy from '../utils/group-by';
 
-export default Ember.ArrayController.extend({
+export default Ember.ObjectController.extend({
+  // easier access and better semantics
+  lessons: function () {
+    return this.get('content.content');
+  }.property('content.content'),
+
   // ordinary lesson or sibling-lesson
   single: function () {
-    return this.get('content').length === 1 || this.get('nested').length === 1;
-  }.property('content', 'nested'),
+    return this.get('lessons').length === 1 || this.get('nested').length === 1;
+  }.property('lessons', 'nested'),
 
   lesson: function () {
-    return this.get('content.firstObject');
-  }.property('content'),
+    return this.get('lessons.firstObject');
+  }.property('lessons'),
 
   nested: function () {
-    return groupBy(this.get('content'), 'subject', 'data.cluster' );
-  }.property('content'),
+    return groupBy(this.get('lessons'), 'subject', 'data.cluster' );
+  }.property('lessons'),
 
   // combine lessons into one. originally for sibling-lessons.
   combined: function () {
     // map as plain data object
-    var lessons = this.get('content').map((lesson) => lesson.get('data'));
+    var lessons = this.get('lessons').map((lesson) => lesson.get('data'));
 
     // exit early if possible
     if (lessons.length === 1) {
@@ -40,5 +45,5 @@ export default Ember.ArrayController.extend({
     });
 
     return res;
-  }.property('content')
+  }.property('lessons')
 });
