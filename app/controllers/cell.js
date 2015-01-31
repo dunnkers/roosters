@@ -13,7 +13,7 @@ export default Ember.ObjectController.extend({
   }.property('lessons', 'nested'),
 
   nested: function () {
-    return groupBy(this.get('lessons'), 'subject', 'data.cluster' );
+    return groupBy(this.get('lessons'), 'subject' );
   }.property('lessons'),
 
   // combine lessons into one. originally for sibling-lessons.
