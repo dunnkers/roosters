@@ -7,7 +7,7 @@
   // all cells
   td, th {
     font-size: 12px;
-    border: 1px solid $gray-light;
+    border: 1px solid $gray;
     vertical-align: top;
   }
 
@@ -48,9 +48,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
 
-    // allow basically no width, causing the header to ellipsize in mobile
     @media (max-width: $screen-sm-min) {
+      // allow basically no width, causing the header to ellipsize in mobile
       max-width: 7px;
+
+      // force headers to collapse into ellipsis earlier
+      padding: 2px 4px;
     }
   }
 
