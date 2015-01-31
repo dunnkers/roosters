@@ -12,10 +12,6 @@ export default Ember.ObjectController.extend({
     return this.get('lessons').length === 1 || this.get('nested').length === 1;
   }.property('lessons', 'nested'),
 
-  lesson: function () {
-    return this.get('lessons.firstObject');
-  }.property('lessons'),
-
   nested: function () {
     return groupBy(this.get('lessons'), 'subject', 'data.cluster' );
   }.property('lessons'),

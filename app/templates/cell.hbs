@@ -1,38 +1,40 @@
 {{#if cell.single}}
+  {{#with cell.lessons.firstObject as lesson}}
 
-  {{! Ordinary- or sibling lesson }}
-  {{#if cell.lesson.detailed}}
+    {{! Ordinary- or sibling lesson }}
+    {{#if lesson.detailed}}
 
-    {{! Table cell }}
-    {{#link-to "lesson" cell.lesson tagName="td" class="cell" }}
-      {{! Use both href and action for accessibility }}
-      {{#link-to "lesson" cell.lesson}}
+      {{! Table cell }}
+      {{#link-to "lesson" lesson tagName="td" class="cell" }}
+        {{! Use both href and action for accessibility }}
+        {{#link-to "lesson" lesson}}
 
-        {{#if cell.lesson.between}}
-          <div>
-            tussen
-          </div>
-        {{else}}
-          <div>
-            {{render "lesson-info" cell.combined}}
-          </div>
-        {{/if}}
+          {{#if lesson.between}}
+            <div>tussen</div>
+          {{else}}
+            {{#with cell.combined as lesson}}
+              <div>{{partial cellTemplate}}</div>
+            {{/with}}
+          {{/if}}
 
+        {{/link-to}}
       {{/link-to}}
-    {{/link-to}}
 
-  {{else}}
-    <td></td>
-  {{/if}}
+    {{else}}
+      {{! Empty }}
+      <td></td>
+    {{/if}}
+
+  {{/with}}
 {{else}}
 
   {{! Nested }}
   <td>
     <table>
       <tbody>
-        {{#each cell in cell.nested}}
+        {{#each cell in cell.nested itemController="cell" }}
           <tr>
-            {{render "cell" cell.content}}
+            {{partial "cell"}}
           </tr>
         {{/each}}
       </tbody>

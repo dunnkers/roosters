@@ -8,5 +8,16 @@ export default Ember.Component.extend({
         sortProperties: [ 'index' ],
         sortAscending: true
     });
-  }.property('schedule.lessons')
+  }.property('schedule.lessons'),
+
+  cellTemplate: function () {
+    var type = this.get('type');
+
+    // Group cells are the same as student cells.
+    if (type === 'Group') {
+      type = 'Student';
+    }
+
+    return 'cell-' + type.toLowerCase();
+  }.property('type')
 });
