@@ -24,6 +24,11 @@ export default Ember.ArrayController.extend({
   actions: {
     search: function (item) {
       this.transitionToRoute('item', item);
+
+      // if mobile, un-focus the input to hide the on-screen keyboard.
+      if (Ember.$('.mobile-environment').is(':visible')) {
+        Ember.$('.typeahead').blur();
+      }
     },
 
     fetch: function (query, callback) {
