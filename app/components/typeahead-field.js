@@ -13,6 +13,11 @@ export default Ember.TextField.extend({
     this.$().focus();
   }.on('didInsertElement'),
 
+  // After typeahead inserted elements in DOM; we can now move this button
+  moveClearIcon: function () {
+    Ember.$('.close-icon').appendTo('.twitter-typeahead');
+  }.on('didInsertElement'),
+
   initializeTypeahead: function () {
     var element = Ember.$('.typeahead').typeahead({
       highlight: true

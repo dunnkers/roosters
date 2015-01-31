@@ -10,15 +10,24 @@
         {{subject}}
         {{#if room.id}}
           <small>in</small>
-          <span class="text-muted">{{room.id}}</span>
+          <span class="text-muted">
+            {{#link-to "item" room.id}}
+              {{room.id}}
+            {{/link-to}}
+          </span>
         {{/if}}
       {{/if}}
     </h4>
     {{#unless between}}
       <h5 class="modal-title">
+        {{#link-to "item" teacher.id}}{{teacher.name}}{{/link-to}}
         {{! Use non-breaking space to ensure layout doens't move }}
-        {{teacher.name}}&nbsp;
-        <span class="text-muted pull-right">{{group.id}}{{cluster.id}}</span>
+        &nbsp;
+        <span class="text-muted pull-right">
+          {{#link-to "item" group.id}}
+            {{group.id}}
+          {{/link-to}}{{cluster.id}}
+        </span>
       </h5>
     {{/unless}}
   </div>
