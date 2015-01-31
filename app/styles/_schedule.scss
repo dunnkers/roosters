@@ -61,14 +61,11 @@
     $hoverColor: #D6F5FF;
     $activeColor: #d0e4ea;
 
+    /* cell hovering. -before- active state styling */
     td.cell {
       &:hover {
         background-color: $hoverColor;
         cursor: pointer;
-      }
-
-      > a.active > div {
-        background-color: $activeColor;
       }
 
       > a {
@@ -85,6 +82,15 @@
             background-color: $hoverColor;
           }
         }
+      }
+    }
+
+    /* active cells and links */
+    td.cell.active {
+      background-color: $activeColor;
+
+      > a.active > div {
+        background-color: $activeColor;
       }
     }
 
