@@ -1,7 +1,7 @@
 <div class="list-group">
-  {{#each student in arrangedContent}}
-    {{#link-to 'item' student.id class="list-group-item" }}
-      {{student.title}}
+  {{#each item in arrangedContent}}
+    {{#link-to 'item' item.id class="list-group-item" }}
+      {{item.title}}
     {{/link-to}}
   {{/each}}
 </div>

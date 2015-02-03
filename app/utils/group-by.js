@@ -15,9 +15,15 @@ export default function (collection, ...properties) {
     // populate result with properties
     properties.forEach(function (property) {
       // set to first property. e.g. 'cluster' not to 'cluster.id'
-      property = property.match(/[^.]*/i)[0];
+      var split = property.split('.');
 
-      result[property] = item.get(property);
+      // padd out higher level properties with empty object
+      while (split.length > 1) {
+        result.set(split.shift(), {});
+      }
+
+      // always use set() for ember objects (always allows nested props)
+      result.set(property, item.get(property));
     });
 
     var exists = groups.any(function (group) {
