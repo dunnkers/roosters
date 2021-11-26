@@ -1,6 +1,8 @@
 # Roosters
 
-Dit is de front-end van de roosters applicatie, in HTML, CSS en JavaScript.
+Dit is de **front-end** van de roosters applicatie, in HTML, CSS en JavaScript.
+
+→ the front-end gets data from [this backend](https://github.com/dunnkers/roosters-api).
 
 ## Technologie
 
